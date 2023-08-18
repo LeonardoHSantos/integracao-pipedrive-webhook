@@ -8,6 +8,7 @@ def Deals(request):
     if request.method == "GET":
         return render(request, "app/deals.html")
     elif request.method == "POST":
+        print(request.headers)
         body = json.loads(request.body)
         header_post = request.POST
         print(f" --------------->> JSON/BODY: ")
