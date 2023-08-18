@@ -4,13 +4,14 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 import os
-from config_app import ALLOWED_HOSTS, CSRF_TRUSTED_ORIGINS, DEBUG, SECRET_KEY
+import config_app
 
-SECRET_KEY = SECRET_KEY
-DEBUG = DEBUG
 
-ALLOWED_HOSTS = ALLOWED_HOSTS
-CSRF_TRUSTED_ORIGINS = CSRF_TRUSTED_ORIGINS
+SECRET_KEY = config_app.SECRET_KEY
+DEBUG = config_app.DEBUG
+
+ALLOWED_HOSTS = config_app.ALLOWED_HOSTS
+CSRF_TRUSTED_ORIGINS = config_app.CSRF_TRUSTED_ORIGINS
 
 
 # Application definition
@@ -66,13 +67,24 @@ WSGI_APPLICATION = 'pjt_pipedrive.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if config_app.CONN_REMOTE_DATABASE:
+    DATABASES = {
+        'default': {
+            'ENGINE': config_app.DB_ENGINE,
+            'HOST': config_app.DB_HOST,
+            'USER': config_app.DB_USER,
+            'PASSWORD': config_app.DB_PASSWORD,
+            'NAME': config_app.DB_NAME,
+            'PORT': config_app.DB_PORT,
+        }
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

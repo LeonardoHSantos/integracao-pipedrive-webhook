@@ -1,17 +1,19 @@
 from django.db import models
-
+from django.utils import timezone
 
 class Deals(models.Model):
-    deal_id = models.IntegerField()
-    deal_name = models.CharField(max_length=155)
-
-    person_id = models.IntegerField()
-    person_name = models.CharField(max_length=155)
-    person_phone = models.CharField(max_length=25)
-    person_email = models.EmailField(max_length=55)
-
-    class Meta:
-        indexes = [
-            models.Index(fields=["deal_id", "deal_name"])
-        ]
+    current_id = models.IntegerField(default=0)
+    current_owner_name = models.CharField(default="-", max_length=155)
+    current_stage_id = models.IntegerField(default=0)
+    current_active = models.BooleanField(default=False)
+    current_status = models.CharField(default="-", max_length=15)
+    current_person_id = models.IntegerField(default=0)
+    current_person_name = models.CharField(default="-", max_length=155)
+    current_pipeline_id = models.IntegerField(default=0)
+    current_title = models.CharField(default="-", max_length=155)
+    current_org_name = models.CharField(default="-", max_length=155)
+    current_weighted_value = models.FloatField(default=0.0)
+    current_value = models.FloatField(default=0.0)
+    current_update_time = models.DateTimeField(default=timezone.now)
+    current_add_time = models.DateTimeField(default=timezone.now)
 
