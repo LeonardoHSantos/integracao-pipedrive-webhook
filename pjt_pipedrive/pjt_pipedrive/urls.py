@@ -4,5 +4,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('webhook/pipedrive/', include("app_webhook.urls")),
+    path('webhook/', include("app_webhook.urls")),
 ]
