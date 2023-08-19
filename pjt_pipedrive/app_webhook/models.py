@@ -1,6 +1,9 @@
 from django.db import models
 from django.utils import timezone
 
+class Person(models.Model):
+    pass
+
 class Deals(models.Model):
     current_id = models.IntegerField(default=0)
     current_owner_name = models.CharField(default="-", max_length=155)

@@ -6,7 +6,6 @@ class PrepareData:
         try:
             list_string = list()
             for i in dtime_string:
-                print(i)
                 try:
                     if int(i)>=0:
                         list_string.append(i)

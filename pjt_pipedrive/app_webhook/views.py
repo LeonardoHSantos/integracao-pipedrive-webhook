@@ -7,6 +7,23 @@ from .models import Deals
 from prepare_data import PrepareData
 
 @csrf_exempt
+def PipedrivePerson(request):
+    try:
+        if request.method == "GET":
+            return render(request, "app/person.html")
+        elif request.method == "POST":
+            print(request.headers)
+            print("\n\n --------->> DATA WEBHOOK - PERSON")
+            body = json.loads(request.body)
+            print(body)
+
+            return JsonResponse({"code": 200, "msg": "success action webhook person - update"})
+            
+        return JsonResponse({"code": 401, "msg": "not-fould"})
+    except Exception as e:
+        print(f"ERROR WEBHOOK PERSON | ERROR: {e}")
+        return JsonResponse({"code": 400, "msg": "error action webhook person"})
+@csrf_exempt
 def PipedriveDeals(request):
     try:
         if request.method == "GET":
