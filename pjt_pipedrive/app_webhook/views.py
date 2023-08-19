@@ -52,7 +52,7 @@ def PipedrivePerson(request):
             --> current_add_time: {current_add_time} | {type(current_add_time)}
             --> current_update_time: {current_update_time} | {type(current_update_time)}
             """)
-            query_person = Person.objects.filter(current_id=current_id).first()
+            query_person = Person.objects.filter(current_person_id=current_id).first()
             print("\n ------------ query person ------------ ")
             print(query_person)
             if query_person is not None:
