@@ -18,10 +18,10 @@ def PipedrivePerson(request):
             print(body)
             current = body["current"]
             # ---
-            current_id = current["id"]
+            current_id = int(current["id"])
             current_name = current["name"]
             current_owner_name = current["owner_name"]
-            current_open_deals_count = current["open_deals_count"]
+            current_open_deals_count = int(current["open_deals_count"])
             current_email = current["email"][0]["value"]
             current_phone = current["phone"][0]["value"]
             current_add_time = PrepareData.convert_string_to_datetime(current["add_time"])
@@ -62,6 +62,7 @@ def PipedrivePerson(request):
                     current_add_time=current_add_time,
                     current_update_time=current_update_time
                 )
+                # new_person.save()
                 print("\n\n --------->>> registro criado - person ")
                 print(new_person)
 
@@ -158,6 +159,7 @@ def PipedriveDeals(request):
                     current_update_time=current_update_time
                 )
                 print("\n\n --------->>> registro criado - deals ")
+                # new_deal.save()
                 print(new_deal)
 
             
