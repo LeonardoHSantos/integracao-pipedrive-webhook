@@ -6,11 +6,26 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Deals, Person
 from prepare_data import PrepareData
 
+def home(request):
+    if request.method == "GET":
+        query_person = Person.objects.all()
+        context = {
+            "person": query_person
+        }
+        print(context)
+        return render(request, "app/home.html", context=context)
+
+
 @csrf_exempt
 def PipedrivePerson(request):
     try:
         if request.method == "GET":
-            return render(request, "app/person.html")
+            query_person = Person.objects.all()
+            context = {
+                "person": query_person
+            }
+            print(context)
+            return render(request, "app/person.html", context=context)
         elif request.method == "POST":
             print(request.headers)
             print("\n\n --------->> DATA WEBHOOK - PERSON")
@@ -41,35 +56,31 @@ def PipedrivePerson(request):
             print("\n ------------ query person ------------ ")
             print(query_person)
             if query_person is not None:
-                query_person.current_id = current_id
-                query_person.current_name = current_name
-                query_person.current_owner_name = current_owner_name
-                query_person.current_open_deals_count = current_open_deals_count
-                query_person.current_email = current_email
-                query_person.current_phone = current_phone
-                query_person.current_add_time = current_add_time
-                query_person.current_update_time = current_update_time
+                query_person.current_person_id = current_id
+                query_person.current_person_name = current_name
+                query_person.current_person_owner_name = current_owner_name
+                query_person.current_person_open_deals_count = current_open_deals_count
+                query_person.current_person_email = current_email
+                query_person.current_person_phone = current_phone
+                query_person.current_person_add_time = current_add_time
+                query_person.current_person_update_time = current_update_time
                 query_person.save()
                 print(" --------->>> registro atualizado - person ")
             else:
                 new_person = Person.objects.create(
-                    current_id=current_id,
-                    current_name=current_name,
-                    current_owner_name=current_owner_name,
-                    current_open_deals_count=current_open_deals_count,
-                    current_email=current_email,
-                    current_phone=current_phone,
-                    current_add_time=current_add_time,
-                    current_update_time=current_update_time
+                    current_person_id=current_id,
+                    current_person_name=current_name,
+                    current_person_owner_name=current_owner_name,
+                    current_person_open_deals_count=current_open_deals_count,
+                    current_person_email=current_email,
+                    current_person_phone=current_phone,
+                    current_person_add_time=current_add_time,
+                    current_person_update_time=current_update_time
                 )
                 # new_person.save()
                 print("\n\n --------->>> registro criado - person ")
                 print(new_person)
-
-
-
             return JsonResponse({"code": 200, "msg": "success action webhook person - update"})
-            
         return JsonResponse({"code": 401, "msg": "not-fould"})
     except Exception as e:
         print(f"ERROR WEBHOOK PERSON | ERROR: {e}")
@@ -121,42 +132,57 @@ def PipedriveDeals(request):
             current_update_time : {current_update_time } | {type(current_update_time)}
 
             """)
-            query_deal = Deals.objects.filter(current_id=current_id).first()
+            query_deal = Deals.objects.filter(current_deal_id=current_id).first()
             print("\n ------------ query deals ------------ ")
             print(query_deal)
-            if query_deal is not None:
-                query_deal.current_id = current_id
-                query_deal.current_person_id = current_person_id
-                query_deal.current_owner_name = current_owner_name
-                query_deal.current_stage_id = current_stage_id
-                query_deal.current_active = current_active
-                query_deal.current_person_name  = current_person_name
-                query_deal.current_status  = current_status
-                query_deal.current_title  = current_title
-                query_deal.current_org_name  = current_org_name
-                query_deal.current_pipeline_id  = current_pipeline_id
-                query_deal.current_value  = current_value
-                query_deal.current_weighted_value  = current_weighted_value
-                query_deal.current_add_time  = current_add_time
-                query_deal.current_update_time  = current_update_time
+            person = Person.objects.filter(current_person_id=current_person_id).first()
+            print("\n ------------ query person ------------ ")
+            print(person)
+
+            if person is None:
+                person = Person.objects.create(
+                    current_person_id=current_person_id,
+                    current_person_name=current_person_name,
+                    current_person_add_time=current_add_time,
+                    current_person_update_time=current_update_time,
+                    )
+                person.save()
+                person = Person.objects.filter(current_person_id=current_person_id).first()
+            print(f" PERSON: {person}")
+            if query_deal is not None:            
+                query_deal.current_deal_id = current_id
+                query_deal.current_deal_person_id = current_person_id
+                query_deal.current_deal_owner_name = current_owner_name
+                query_deal.current_deal_stage_id = current_stage_id
+                query_deal.current_deal_active = current_active
+                query_deal.current_deal_person_name  = current_person_name
+                query_deal.current_deal_status  = current_status
+                query_deal.current_deal_title  = current_title
+                query_deal.current_deal_org_name  = current_org_name
+                query_deal.current_deal_pipeline_id  = current_pipeline_id
+                query_deal.current_deal_value  = current_value
+                query_deal.current_deal_weighted_value  = current_weighted_value
+                query_deal.current_deal_add_time  = current_add_time
+                query_deal.current_deal_update_time  = current_update_time
                 query_deal.save()
                 print(" --------->>> registro atualizado - deals ")
             else:
                 new_deal = Deals.objects.create(
-                    current_id=current_id,
-                    current_person_id=current_person_id,
-                    current_owner_name=current_owner_name,
-                    current_stage_id=current_stage_id,
-                    current_active=current_active,
-                    current_person_name=current_person_name,
-                    current_status=current_status,
-                    current_title=current_title,
-                    current_org_name=current_org_name,
-                    current_pipeline_id=current_pipeline_id,
-                    current_value=current_value,
-                    current_weighted_value =current_weighted_value ,
-                    current_add_time=current_add_time,
-                    current_update_time=current_update_time
+                    person=person,
+                    current_deal_id=current_id,
+                    current_deal_person_id=current_person_id,
+                    current_deal_owner_name=current_owner_name,
+                    current_deal_stage_id=current_stage_id,
+                    current_deal_active=current_active,
+                    current_deal_person_name=current_person_name,
+                    current_deal_status=current_status,
+                    current_deal_title=current_title,
+                    current_deal_org_name=current_org_name,
+                    current_deal_pipeline_id=current_pipeline_id,
+                    current_deal_value=current_value,
+                    current_deal_weighted_value =current_weighted_value ,
+                    current_deal_add_time=current_add_time,
+                    current_deal_update_time=current_update_time
                 )
                 print("\n\n --------->>> registro criado - deals ")
                 # new_deal.save()

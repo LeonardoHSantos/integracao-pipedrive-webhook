@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container" style="margin: 70px auto;">
+    <h1>Leonardo H. Santos - Desenvolvedor de Softwares</h1>
+    <div class="row g-0 bg-body-secondary position-relative">
+        <div class="col-md-6 mb-md-0 p-md-4">
+            <img src="https://avatars.githubusercontent.com/u/80490529?v=4" class="object-cover border rounded" style="max-width: 100%;" alt="...">
+        </div>
+        <div class="col-md-6 p-4 ps-md-0">
+            <h5 class="mt-0">Aplicação Web - Django Framework</h5>
+            <p>O objetivo principal da aplicação é a integração com Webhook do Pipedrive, trata-se de um CRM de Funil de Vendas.</p>
+            <p>Há diversos eventos do webhook, integrei apenas os eventos de "Deal" e "Person", são eventos de negócios criados e contatos do funil de vendas.</p>
+            <div class="container row g-3">
+                <a href="https://github.com/LeonardoHSantos" class="stretched-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/leonardosantos2019/" class="stretched-link">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -3,5 +3,40 @@
 {% block title %}Person{% endblock %}
 
 {% block content %}
-<h1>Person</h1>
+
+<div class="container" style="margin: 70px auto;">   
+    <h3>Pipedrive - Person</h3> 
+    <div class="table-responsive">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">person_id</th>
+                    <th scope="col">person_name</th>
+                    <th scope="col">person_owner_name</th>
+                    <th scope="col">person_open_deals_count</th>
+                    <th scope="col">person_email</th>
+                    <th scope="col">person_phone</th>
+                    <th scope="col">person_add_time</th>
+                    <th scope="col">person_update_time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in person %}
+                <tr>
+                    <td scope="row">{{data.id}}</td>
+                    <td>{{data.current_person_id}}</td>
+                    <td>{{data.current_person_name}}</td>
+                    <td>{{data.current_person_owner_name}}</td>
+                    <td>{{data.current_person_open_deals_count}}</td>
+                    <td>{{data.current_person_email}}</td>
+                    <td>{{data.current_person_phone}}</td>
+                    <td>{{data.current_person_add_time}}</td>
+                    <td>{{data.current_person_update_time}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
