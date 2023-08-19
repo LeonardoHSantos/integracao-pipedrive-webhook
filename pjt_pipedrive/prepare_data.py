@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class PrepareData:
@@ -13,7 +13,7 @@ class PrepareData:
                     pass
             
             date_string = ''.join(list_string)
-            date_time_obj = datetime.strptime(date_string, '%Y%m%d%H%M%S')
+            date_time_obj = datetime.strptime(date_string, '%Y%m%d%H%M%S') - timedelta(hours=3)
             return date_time_obj
         except Exception as e:
             print(f" ### ERROR CONVERT STR TO DATETIME | ERROR: {e}")
