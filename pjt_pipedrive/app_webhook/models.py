@@ -2,7 +2,14 @@ from django.db import models
 from django.utils import timezone
 
 class Person(models.Model):
-    pass
+    current_id = models.IntegerField(default=0)
+    current_name = models.CharField(default="-", max_length=155)
+    current_owner_name = models.CharField(default="-", max_length=155)
+    current_open_deals_count = models.IntegerField(default=0)
+    current_email = models.CharField(default="-", max_length=55)
+    current_phone = models.CharField(default="-", max_length=25)
+    current_add_time = models.DateTimeField(default=timezone.now)
+    current_update_time = models.DateTimeField(default=timezone.now)
 
 class Deals(models.Model):
     current_id = models.IntegerField(default=0)

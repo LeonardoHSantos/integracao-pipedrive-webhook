@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Deals
+from .models import Deals, Person
 from prepare_data import PrepareData
 
 @csrf_exempt
@@ -16,6 +16,56 @@ def PipedrivePerson(request):
             print("\n\n --------->> DATA WEBHOOK - PERSON")
             body = json.loads(request.body)
             print(body)
+            current = body["current"]
+            # ---
+            current_id = current["id"]
+            current_name = current["name"]
+            current_owner_name = current["owner_name"]
+            current_open_deals_count = current["open_deals_count"]
+            current_email = current["email"][0]["value"]
+            current_phone = current["phone"][0]["value"]
+            current_add_time = PrepareData.convert_string_to_datetime(current["add_time"])
+            current_update_time = PrepareData.convert_string_to_datetime(current["update_time"])
+
+            print(f"""
+            --> current_id: {current_id} | {type(current_id)}
+            --> current_name: {current_name} | {type(current_name)}
+            --> current_owner_name: {current_owner_name} | {type(current_owner_name)}
+            --> current_open_deals_count: {current_open_deals_count} | {type(current_open_deals_count)}
+            --> current_email: {current_email} | {type(current_email)}
+            --> current_phone: {current_phone} | {type(current_phone)}
+            --> current_add_time: {current_add_time} | {type(current_add_time)}
+            --> current_update_time: {current_update_time} | {type(current_update_time)}
+            """)
+            query_person = Person.objects.filter(current_id=current_id).first()
+            print("\n ------------ query person ------------ ")
+            print(query_person)
+            if query_person is not None:
+                query_person.current_id = current_id
+                query_person.current_name = current_name
+                query_person.current_owner_name = current_owner_name
+                query_person.current_open_deals_count = current_open_deals_count
+                query_person.current_email = current_email
+                query_person.current_phone = current_phone
+                query_person.current_add_time = current_add_time
+                query_person.current_update_time = current_update_time
+                query_person.save()
+                print(" --------->>> registro atualizado - person ")
+            else:
+                new_person = Person.objects.create(
+                    current_id=current_id,
+                    current_name=current_name,
+                    current_owner_name=current_owner_name,
+                    current_open_deals_count=current_open_deals_count,
+                    current_email=current_email,
+                    current_phone=current_phone,
+                    current_add_time=current_add_time,
+                    current_update_time=current_update_time
+                )
+                print("\n\n --------->>> registro criado - person ")
+                print(new_person)
+
+
 
             return JsonResponse({"code": 200, "msg": "success action webhook person - update"})
             
@@ -74,7 +124,6 @@ def PipedriveDeals(request):
             print("\n ------------ query deals ------------ ")
             print(query_deal)
             if query_deal is not None:
-                query_deal
                 query_deal.current_id = current_id
                 query_deal.current_person_id = current_person_id
                 query_deal.current_owner_name = current_owner_name
@@ -108,7 +157,7 @@ def PipedriveDeals(request):
                     current_add_time=current_add_time,
                     current_update_time=current_update_time
                 )
-                print("\n\n --------->>> criar registro - deals ")
+                print("\n\n --------->>> registro criado - deals ")
                 print(new_deal)
 
             
