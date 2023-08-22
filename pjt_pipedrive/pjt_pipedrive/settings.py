@@ -124,12 +124,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = config_app.STATIC_ROOT
 
-STATICFILES_DIRS = [
-    # BASE_DIR / "static",
-    # os.path.join(BASE_DIR, "app_webhook/static/css"),
-    # os.path.join(BASE_DIR, "app_webhook/static/img"),
-    # os.path.join(BASE_DIR, "base_statics/js"),
-]
+# STATICFILES_DIRS = [
+#     # BASE_DIR / "static",
+#     os.path.join(BASE_DIR, "app_webhook/static/css"),
+#     os.path.join(BASE_DIR, "app_webhook/static/img"),
+#     # os.path.join(BASE_DIR, "base_statics/js"),
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
