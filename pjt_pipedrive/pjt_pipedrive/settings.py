@@ -125,8 +125,9 @@ STATIC_URL = 'static/'
 STATIC_ROOT = config_app.STATIC_ROOT
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "app_webhook/static/css"),
-    os.path.join(BASE_DIR, "app_webhook/static/img"),
+    # BASE_DIR / "static",
+    # os.path.join(BASE_DIR, "app_webhook/static/css"),
+    # os.path.join(BASE_DIR, "app_webhook/static/img"),
     # os.path.join(BASE_DIR, "base_statics/js"),
 ]
 
