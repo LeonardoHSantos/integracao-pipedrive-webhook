@@ -12,6 +12,7 @@ DEBUG = config_app.DEBUG
 
 ALLOWED_HOSTS = config_app.ALLOWED_HOSTS
 CSRF_TRUSTED_ORIGINS = config_app.CSRF_TRUSTED_ORIGINS
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 
 # Application definition
