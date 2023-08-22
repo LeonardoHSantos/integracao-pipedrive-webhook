@@ -1,3 +1,5 @@
 __pycache__
 config_app.py
 deals.json
+api_asana.py
+api_pipedrive.py

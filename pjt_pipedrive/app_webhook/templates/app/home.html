@@ -3,21 +3,144 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="container" style="margin: 70px auto;">
-    <h1>Leonardo H. Santos - Desenvolvedor de Softwares</h1>
-    <div class="row g-0 bg-body-secondary position-relative">
-        <div class="col-md-6 mb-md-0 p-md-4">
-            <img src="https://avatars.githubusercontent.com/u/80490529?v=4" class="object-cover border rounded" style="max-width: 100%;" alt="...">
-        </div>
-        <div class="col-md-6 p-4 ps-md-0">
-            <h5 class="mt-0">Aplicação Web - Django Framework</h5>
-            <p>O objetivo principal da aplicação é a integração com Webhook do Pipedrive, trata-se de um CRM de Funil de Vendas.</p>
-            <p>Há diversos eventos do webhook, integrei apenas os eventos de "Deal" e "Person", são eventos de negócios criados e contatos do funil de vendas.</p>
-            <div class="container row g-3">
-                <a href="https://github.com/LeonardoHSantos" class="stretched-link">GitHub</a>
-                <a href="https://www.linkedin.com/in/leonardosantos2019/" class="stretched-link">LinkedIn</a>
-            </div>
-        </div>
+
+<main style="margin-top: 55px !important;">
+  <div class="container banner-principal">
+    <img src="{% static 'banner desenvolvimento web 1.png' %}" alt="" class="w-100 p-2">
+  </div>
+  <div class="container-fluid banner-principal-2 d-flex gap-5 flex-wrap">
+    <div class="block-banner block-1"></div>
+    <div class="block-banner block-2">
+      <h3>conheça o projeto</h3>
     </div>
-</div>
+    <div class="block-banner block-3"></div>
+  </div>
+  <div id="carouselExample" class="carousel carousel-dark slide d-none d-sm-block ">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+
+        <div class="cards-wrapper">
+
+          <div class="card" style="width: 18rem;">
+            <div class="image-wrapper">
+              <img src="{% static 'logo-pipedrive.png' %}" alt="...">
+            </div>
+              <div class="card-body">
+              <h5 class="card-title">Pipedrive (funil de vendas)</h5>
+              <p class="card-text">Integração com webohook do CRM Pipedrive + banco de dados relacional.</p>
+              <a href="#" class="btn btn-primary">ver mais</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <div class="image-wrapper">
+              <img src="{% static 'logo-django.png' %}" alt="...">
+            </div>
+              <div class="card-body">
+              <h5 class="card-title">Django 4.2.4</h5>
+              <p class="card-text">Sistema web com Django Framework na versão atual. Ágil e escalével.</p>
+              <a href="#" class="btn btn-primary">ver mais</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <div class="image-wrapper">
+              <img src="{% static 'logo-bootstrap.png' %}" alt="...">
+            </div>
+              <div class="card-body">
+              <h5 class="card-title">Bootstrap v.5</h5>
+              <p class="card-text">Estilização com o Bootstrap Framework na versão atual.</p>
+              <a href="#" class="btn btn-primary">ver mais</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <div class="image-wrapper">
+              <img src="{% static 'logo-power-bi.png' %}" alt="...">
+            </div>
+              <div class="card-body">
+              <h5 class="card-title">Power BI</h5>
+              <p class="card-text">Relatórios personalizados integrado com MySQL.</p>
+              <a href="#" class="btn btn-primary">ver mais</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+
+
+  
+  <div id="carouselExampleSmallScreen" class="carousel slide d-sm-none">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="card">
+            <div class="image-wrapper">
+              <img src="{% static 'logo-pipedrive.png' %}" alt="...">
+            </div>
+              <div class="card-body">
+              <h5 class="card-title">Pipedrive (funil de vendas)</h5>
+              <p class="card-text">Integração com webohook do CRM Pipedrive + banco de dados relacional.</p>
+              <a href="#" class="btn btn-primary">ver mais</a>
+            </div>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <div class="card">
+            <div class="image-wrapper">
+              <img src="{% static 'logo-django.png' %}" alt="...">
+            </div>
+              <div class="card-body">
+              <h5 class="card-title">Django 4.2.4</h5>
+              <p class="card-text">Sistema web com Django Framework na versão atual. Ágil e escalével.</p>
+              <a href="#" class="btn btn-primary">ver mais</a>
+            </div>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <div class="card">
+            <div class="image-wrapper">
+              <img src="{% static 'logo-bootstrap.png' %}" alt="...">
+            </div>
+              <div class="card-body">
+              <h5 class="card-title">Bootstrap v.5</h5>
+              <p class="card-text">Estilização com o Bootstrap Framework na versão atual.</p>
+              <a href="#" class="btn btn-primary">ver mais</a>
+            </div>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <div class="card">
+            <div class="image-wrapper">
+              <img src="{% static 'logo-power-bi.png' %}" alt="...">
+            </div>
+              <div class="card-body">
+              <h5 class="card-title">Power BI</h5>
+              <p class="card-text">Relatórios personalizados integrado com MySQL.</p>
+              <a href="#" class="btn btn-primary">ver mais</a>
+            </div>
+          </div>
+      </div>
+      
+
+
+    </div>
+
+    <div class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSmallScreen" data-bs-slide="prev">
+      <i class="fa-solid fa-chevron-left btn-carousel-custom"></i>
+      <span class="visually-hidden">anterior</span>
+    </div>
+    <div class="carousel-control-next" type="button" data-bs-target="#carouselExampleSmallScreen" data-bs-slide="next">
+      <i class="fa-solid fa-chevron-right btn-carousel-custom"></i>
+      <span class="visually-hidden">próximo</span>
+    </div>
+   
+  </div>
+
+
+
+</main>
 {% endblock %}
