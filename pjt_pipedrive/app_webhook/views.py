@@ -15,7 +15,17 @@ def home(request):
         print(context)
         return render(request, "app/home.html", context=context)
 
-
+def infoPerson(request, id_person):
+    if request.method == "GET":
+        query_person = Deals.objects.all().filter(
+            current_deal_person_id=int(id_person)
+        )
+        context = {
+            "person": query_person
+        }
+        print(context)
+        return render(request, "app/infoPerson.html", context=context)
+    
 @csrf_exempt
 def PipedrivePerson(request):
     try:
@@ -85,6 +95,7 @@ def PipedrivePerson(request):
     except Exception as e:
         print(f"ERROR WEBHOOK PERSON | ERROR: {e}")
         return JsonResponse({"code": 400, "msg": "error action webhook person"})
+
 @csrf_exempt
 def PipedriveDeals(request):
     try:
