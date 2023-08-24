@@ -4,7 +4,10 @@ from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Deals, Person
-from prepare_data import PrepareData
+from api.prepare_data import PrepareData
+from api.api_pipedrive import API_Pipedrive
+from config_app import API_TOKEN, COMPANY_DOMAIN
+
 
 def home(request):
     if request.method == "GET":
@@ -12,19 +15,73 @@ def home(request):
         context = {
             "person": query_person
         }
-        print(context)
+        # print(context)
         return render(request, "app/home.html", context=context)
 
 def infoPerson(request, id_person):
+    API = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN)
     if request.method == "GET":
-        query_person = Deals.objects.all().filter(
-            current_deal_person_id=int(id_person)
-        )
-        context = {
-            "person": query_person
+        person = API.get_person(person_id=int(id_person))
+        if person["code"] == 200:
+            context = {
+                "data": person["data"],
+                "data_resume": person["data_resume"],
+            }
+            # print(context)
+            return render(request, "app/infoPerson.html", context=context)
+        else:
+            context = {
+                "code": 400,
+                "data": "error",
+                "not_found_data": True,
+            }
+            return render(request, "app/infoPerson.html", context=context)
+
+    elif request.method == "POST":
+        r = dict(request.POST)
+        # print(r)
+        phone = r.get("phone")
+        select_type_phone = r.get("select_type_phone")
+        email = r.get("email")
+        select_type_email = r.get("select_type_email")
+
+        obj_update = {
+            "name": r.get("name")[0],
+            "phone": [],
+            "email": [],
         }
-        print(context)
-        return render(request, "app/infoPerson.html", context=context)
+        
+        for i in range(len(phone)):
+            obj_update.get("phone").append(
+                {
+                    "label": select_type_phone[i],
+                    "value": phone[i]
+                })
+        for i in range(len(email)):
+            obj_update.get("email").append(
+                {
+                    "label": select_type_email[i],
+                    "value": email[i]
+                })
+
+        # print("\n\n\n\n *************** DATA POST")
+        # print(obj_update)
+        API.update_person(person_id=id_person, data=obj_update)
+        person = API.get_person(person_id=int(id_person))
+
+        if person["code"] == 200:
+            context = {
+                "data": person["data"],
+                "data_resume": person["data_resume"],
+            }
+            return render(request, "app/infoPerson.html", context=context)
+        else:
+            context = {
+                "code": 400,
+                "data": "error",
+                "not_found_data": True,
+            }
+            return render(request, "app/infoPerson.html", context=context)
     
 @csrf_exempt
 def PipedrivePerson(request):
@@ -34,13 +91,13 @@ def PipedrivePerson(request):
             context = {
                 "person": query_person
             }
-            print(context)
+            # print(context)
             return render(request, "app/person.html", context=context)
         elif request.method == "POST":
-            print(request.headers)
-            print("\n\n --------->> DATA WEBHOOK - PERSON")
+            # print(request.headers)
+            # print("\n\n --------->> DATA WEBHOOK - PERSON")
             body = json.loads(request.body)
-            print(body)
+            # print(body)
             current = body["current"]
             # ---
             current_id = int(current["id"])

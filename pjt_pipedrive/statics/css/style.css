@@ -168,7 +168,20 @@ body {
     color: aliceblue !important;
     background-color: #3c3cf342 !important;
 }
+
+
+@media screen and (max-width: 1024px) {
+    .container-form-custom {
+        width: 80% !important;
+    }
+}
+@media screen and (max-width: 769px) {
+    .container-form-custom {
+        width: 90% !important;
+    }
+}
 @media screen and (min-width: 568px) {
+    
     .cards-wrapper {
         display: flex;
     }
@@ -199,4 +212,10 @@ body {
         border-radius: 18px 2px;
         color: #d1d1d1;
     }
+    .container-form-custom {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
 }
