@@ -20,7 +20,9 @@ body {
 .mb-70 {
     margin-bottom: 70px !important;
 }
-
+main {
+    margin-top: -17px !important;
+}
 
 .banner-principal-2 {
     margin: 10px 0px;
@@ -167,55 +169,4 @@ body {
     border-radius: 50%;
     color: aliceblue !important;
     background-color: #3c3cf342 !important;
-}
-
-
-@media screen and (max-width: 1024px) {
-    .container-form-custom {
-        width: 80% !important;
-    }
-}
-@media screen and (max-width: 769px) {
-    .container-form-custom {
-        width: 90% !important;
-    }
-}
-@media screen and (min-width: 568px) {
-    
-    .cards-wrapper {
-        display: flex;
-    }
-    .card {
-        margin: 0 .5em;
-        width: calc(100%/3) !important;
-    }
-    .image-wrapper {
-        /* height: 100%; */
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-    }
-}
-
-@media screen and (max-width: 567px) {
-    .banner-principal img {
-        transform: scale(1.225);
-    }
-
-    .card:not(:first-child){
-        display: none;
-    }
-    .block-2 h3 {
-        border: 5px #ffffff;
-        border-style: double;
-        border-radius: 18px 2px;
-        color: #d1d1d1;
-    }
-    .container-form-custom {
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
 }
