@@ -1,12 +1,12 @@
 {% load static %}
-<div class="container-fluid" style="background-color: blueviolet; padding: 5px 0px;">
-    <p class="col text-center" style="color: white;">projeto em desenvolvimento</p>
+<div class="container-fluid" style="background-color: blueviolet; padding: 0px; margin: 0;">
+    <p class="col text-center" style="color: white; margin: 0 !important;">projeto em desenvolvimento</p>
 </div>
 <header>
     <div class="header-navbar">
         <div class="logo-navbar">
             <a href="{% url 'home' %}">
-                <img src="{% static 'rocket-sys-logo.png' %}" alt="logo">
+                <img src="{% static 'rocket-sys-logo-2.png' %}" alt="logo">
             </a>            
         </div>
 
@@ -76,70 +76,8 @@
 
                 <li>
                     <div class="menu-links">
-                        <p>A empresa</p>
-                        <i class="fa-solid fa-angle-down"></i>
+                        <a href="{% url 'about' %}">Sobre</a>
                     </div>
-
-                    <span class="menu-opcoes-dropdown">
-                        
-                        <h1>Conheça mais</h1>
-                        <div class="block-opcoes-menu">
-                            
-                            <div class="content-block-opcoes-menu">
-                                <h3>Contato</h3>
-                                <div class="block-icons">
-                                    <i class="fa-brands fa-linkedin-in"></i>
-                                    <a href="https://www.linkedin.com/company/demandareal" target="_blank">LinkedIn</a>
-                                </div>
-                                <div class="block-icons">
-                                    <i class="fa-brands fa-whatsapp"></i>
-                                    <a href="https://api.whatsapp.com/send/?phone=5541988412653&text&type=phone_number&app_absent=0" target="_blank">(41) 9 8841-2653</a>
-                                </div>
-                                <div class="block-icons">
-                                    <i class="fa-solid fa-envelope"></i>
-                                    <a href="mailto:leonardo.hsantos@outlook.com">leonardo.hsantos@outlook.com</a>
-                                </div>
-
-                                <hr>
-
-                                <h3>Extração de Dados</h3>
-                                <a href="{% url 'info_services' 'extracao-mysql' %}">Fontes MySQL</a>
-                                <a href="{% url 'info_services' 'extracao-consumo-api' %}">Consumo de API</a>
-                                <a href="{% url 'info_services' 'extracao-websocket-webhook' %}">Conexão Websocket e Webhook</a>
-                                <a href="{% url 'info_services' 'extracao-web-scraping' %}">Web Scraping</a>
-                                
-                                <hr>
-
-                                <h3>Insights</h3>
-                                <a href="{% url 'info_services' 'insights-analise-dados' %}">Análise - Interpretação de Dados</a>
-                                <a href="{% url 'info_services' 'insights-metodos-estatisticos' %}">Métodos - Aplicação de Modelos Estatísticos</a>
-                            </div>
-
-                            <div class="content-block-opcoes-menu">
-
-                                <h3>Processamento e Tratamento de Dados</h3>
-                                <a href="{% url 'info_services' 'python-modelos-estatisticos' %}">Python - Modelos Estatísticos</a>
-                                <a href="{% url 'info_services' 'python-numpy-pandas' %}">Python - Numpy e Pandas</a>
-                                <a href="{% url 'info_services' 'python-sklearn' %}">Python - Scikit-learn</a>
-
-                                <hr>
-
-                                <h3>Visualizações de Dados</h3>
-
-                                <h3>Python</h3>
-                                <a href="{% url 'info_services' 'dashboards-python-javascript' %}">Python + JavaScript - Dashboards Web</a>
-                                <a href="{% url 'info_services' 'dashboards-jupyter-matplotlib' %}">Python com Jupyter Notebook - Matplotlib</a>
-                                <a href="{% url 'info_services' 'dashboards-jupyter-seaborn' %}">Python com Jupyter Notebook - Seaborn</a>
-
-                                <h3>Power BI</h3>
-                                <a href="{% url 'info_services' 'power-bi-dashboards-power-bi' %}">Dashboards</a>
-                                <a href="{% url 'info_services' 'power-bi-dashboards-equipes' %}">Controle de Acesso - Equipes</a>
-
-                                <h3>Excel e PowerPoint</h3>
-                                <a href="{% url 'info_services' 'excel-dashboards-relatorios' %}">Dashboards e Relatórios</a>
-                            </div>
-                        </div>
-                    </span>
                 </li>
 
                 {% if user.is_authenticated %}

@@ -18,6 +18,10 @@ def home(request):
         # print(context)
         return render(request, "app/home.html", context=context)
 # ---
+def about(request):
+    if request.method == "GET":
+        return render(request, "app/about.html")
+# ---
 def infoServices(request, service_name):
     if request.method == "GET":
         context = {

@@ -28,18 +28,25 @@ header {
     height: 65px;
     z-index: 9999;
     align-items: center;
-    background-color: #f8f8f8;
+    padding: 5px;
+    background-color: white;
 }
 .header-navbar {
     align-items: center;
     justify-content: space-between;
+    margin: 3px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: var(--color-base-2);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 .logo-navbar {
     width: 200px;
     height: 65px;
     padding: 5px;
+    border-radius: 5px;
     box-sizing: border-box;
-    background-color: rgb(250, 250, 250);
+    background: var(--color-base-2);
 }
 .logo-navbar img {
     width: 100%;
@@ -82,17 +89,18 @@ header {
     height: 21px;
     padding: 4px 4px;
     border-radius: 50%;
-    color: #0404ff;
+    color: white;
     transition: .2s ease-in-out;
 }
-.menu-links a {
+.menu-links a,
+.menu-links p {
     font-weight: 600;
-    color: #7b00ed;
+    color: white;
     text-decoration: none;
 }
 .container-navbar ul li:hover .menu-links i  {
-    color: #bdff00;
-    background-color: #7b00ed;
+    color: var(--color-base-2);
+    background-color: #f8f8f8;
     transform: rotate(180deg);
 }
 .menu-links p {
@@ -102,6 +110,7 @@ header {
     text-align: center;
     cursor: pointer;
 }
+
 .container-navbar ul li span {
     width: 90%;
     max-width: 100%;
