@@ -7,6 +7,9 @@
     .block-opcoes-menu {
         flex-direction: column;
     }
+    .container-cards {
+        justify-content: center !important;
+    }
 }
 @media screen and (max-width: 768px) {
     header {
@@ -14,6 +17,9 @@
     }
     #navbar-mobile {
         display: flex;
+    }
+    .card-service {
+        width: 100% !important;
     }
     
 }
@@ -48,9 +54,6 @@
 @media screen and (max-width: 567px) {
     main {
         margin-top: 51px !important;
-    }
-    .banner-principal img {
-        transform: scale(1.225);
     }
 
     .card:not(:first-child){

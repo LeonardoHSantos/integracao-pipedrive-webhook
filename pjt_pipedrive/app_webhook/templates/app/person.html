@@ -24,22 +24,22 @@
             </thead>
             <tbody>
                 {% for data in person %}
-                <tr>
-                    <td>
-                        <a href="{% url 'info_person' data.current_person_id %}">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                    </td>
-                    <td scope="row">{{data.id}}</td>
-                    <td>{{data.current_person_id}}</td>
-                    <td>{{data.current_person_name}}</td>
-                    <td>{{data.current_person_owner_name}}</td>
-                    <td>{{data.current_person_open_deals_count}}</td>
-                    <td>{{data.current_person_email}}</td>
-                    <td>{{data.current_person_phone}}</td>
-                    <td>{{data.current_person_add_time}}</td>
-                    <td>{{data.current_person_update_time}}</td>
-                </tr>
+                    <tr>
+                        <td>
+                            <a href="{% url 'info_person' data.current_person_id %}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </td>
+                        <td scope="row">{{data.id}}</td>
+                        <td>{{data.current_person_id}}</td>
+                        <td>{{data.current_person_name}}</td>
+                        <td>{{data.current_person_owner_name}}</td>
+                        <td>{{data.current_person_open_deals_count}}</td>
+                        <td>{{data.current_person_email}}</td>
+                        <td>{{data.current_person_phone}}</td>
+                        <td>{{data.current_person_add_time}}</td>
+                        <td>{{data.current_person_update_time}}</td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>
