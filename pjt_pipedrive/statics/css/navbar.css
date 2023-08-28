@@ -112,11 +112,11 @@ header {
 }
 
 .container-navbar ul li span {
-    width: 90%;
+    width: 65%;
     max-width: 100%;
     min-height: 300px;
-    max-height: 485px;
-    padding: 10px;
+    max-height: 50vh;
+    padding: 30px;
     display: none;
     position: absolute;
     flex-wrap: wrap;
@@ -124,7 +124,7 @@ header {
     gap: 10px;
     left: 50%;
     top: 0;
-    transform: translate(-50%, 65px);
+    transform: translate(-50%, 70px);
     background-color: #fefefe;
     border: 1px solid #7b00ed;
     border-radius: 5px;
@@ -158,24 +158,6 @@ header {
     }
 }
 
-.content-block-opcoes-menu hr {
-    margin: 0;
-    width: 70%;
-    height: 4px;
-    border-radius: 5px;
-    background: linear-gradient(to left, #0404ff, #bdff00) !important;
-    animation: animation_width_menu_dropdown_hr .8s;
-}
-@keyframes animation_width_menu_dropdown_hr {
-    from {
-        width: 0%;
-        transition: .1s;
-    }
-    to {
-        width: 70%;
-        transition: .2s;
-    }
-}
 
 .menu-opcoes-dropdown,
 .menu-opcoes-dropdown h1,
@@ -185,24 +167,40 @@ header {
     width: 100%;
     flex-direction: row;
 }
-.content-block-opcoes-menu {
-    flex-direction: column;
+.menu-opcoes-dropdown h1,
+.menu-opcoes-dropdown h3 {
+    font-size: 22px;
+}
+.menu-opcoes-dropdown h1 {
+    font-weight: 600;
+}
+.menu-opcoes-dropdown h3 {
+    border: 0px;
+    border-bottom: solid;
+    border-bottom-width: 2px !important;
+    border-image: linear-gradient(to right, var(--color-base-2), #ffffff) 1;
 }
 .block-opcoes-menu {
-    gap: 10px;
+    gap: 40px;
     align-items: flex-start;
     justify-content: space-around;
 }
 .content-block-opcoes-menu {
     gap: 10px;
+    max-width: 390px;
+    min-height: 185px;
+    flex-direction: column;
 }
+
 .content-block-opcoes-menu a {
     display: block;
     width: fit-content;
-    color: #300855;
     text-decoration: none;
+    color: #1e1d1e;
+    font-size: 16px;
     font-weight: 500;
     transition: .5s ease-in-out;
+    padding-left: 22px;
 }
 .content-block-opcoes-menu a:hover {
     color: #7b00ed;

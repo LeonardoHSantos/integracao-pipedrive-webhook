@@ -26,7 +26,10 @@
                         <h1>Desenvolvimento Web</h1>
                         <div class="block-opcoes-menu">
                             <div class="content-block-opcoes-menu">
-                                <h3>Sistemas</h3>
+                                <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
+                                    <i class="fa-solid fa-code"></i>
+                                    <h3>Sistemas</h3>
+                                </div>
                                 <a href="{% url 'info_services' 'django-painel-administrativo' %}">Painel Administrativo</a>
                                 <a href="{% url 'info_services' 'django-sistema-gestao-estoque' %}">Sistemas de Gestão Vendas</a>
                                 <a href="{% url 'info_services' 'django-sistema-gestao-estoque' %}">Sistemas de Gestão Compras</a>
@@ -35,16 +38,24 @@
                                 <a href="{% url 'info_services' 'django-todos-sistemas' %}">ver mais</a>
                             </div>
                             <div class="content-block-opcoes-menu">
-                                <h3>Manuntenção de Sistemas</h3>
+                                <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
+                                    <i class="fa-solid fa-gears"></i>
+                                    <h3>Manuntenção de Sistemas</h3>
+                                </div>
                                 <a href="{% url 'info_services' 'desenvolvimento-api-rest' %}">Manutenção Sistema Web</a>
                                 <a href="{% url 'info_services' 'desenvolvimento-api-rest' %}">Manutenção Banco de Dados</a>
                             </div>
                             <div class="content-block-opcoes-menu">
                                 <h3>Github</h3>
-                                <a href="https://github.com/LeonardoHSantos" target="_blank">LeonardoHSantos</a>
-                                <hr>
+                                <div class="container-fluid d-flex gap-1 align-items-center justify-content-start">
+                                    <i class="fa-brands fa-github"></i>
+                                    <a href="https://github.com/LeonardoHSantos" target="_blank">LeonardoHSantos</a>
+                                </div>
                                 <h3 style="color: #0a66c2;">Linkedin</h3>
-                                <a href="https://www.linkedin.com/in/leonardosantos2019/" target="_blank">Leonardo H Santos</a>
+                                <div class="container-fluid d-flex gap-1 align-items-center justify-content-start">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                    <a href="https://www.linkedin.com/in/leonardosantos2019/" target="_blank">Leonardo H Santos</a>
+                                </div>
                             </div>
                         </div>
                     </span>
@@ -55,17 +66,31 @@
                         <i class="fa-solid fa-angle-down"></i>
                     </div>
                     <span class="menu-opcoes-dropdown translate-2">
+                        
                         <h1>Serviços de Integrações</h1>
+
                         <div class="block-opcoes-menu">
                             
                             <div class="content-block-opcoes-menu">
-                                <h3>Integrações de Sistemas</h3>
-                                <a href="{% url 'info_services' 'integracao-erp' %}">Integração de sistema ERP</a>
-                                <a href="{% url 'info_services' 'integracao-crm' %}">Integração de sistema CRM</a>
-                                <a href="{% url 'info_services' 'integracao-apps' %}">Integração com Apps</a>
+                                <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
+                                    <i class="fa-solid fa-sitemap"></i>
+                                    <h3>Integrações de Sistemas</h3>
+                                </div>
+                                <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
+                                    <a href="{% url 'info_services' 'integracao-erp' %}">Integração de sistema ERP</a>
+                                </div>
+                                <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
+                                    <a href="{% url 'info_services' 'integracao-crm' %}">Integração de sistema CRM</a>
+                                </div>
+                                <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
+                                    <a href="{% url 'info_services' 'integracao-apps' %}">Integração com Apps</a>
+                                </div>
                             </div>
                             <div class="content-block-opcoes-menu">
-                                <h3>Desenvolvimento de APIs</h3>
+                                <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
+                                    <i class="fa-solid fa-code"></i>
+                                    <h3>Desenvolvimento de APIs</h3>
+                                </div>
                                 <a href="{% url 'info_services' 'desenvolvimento-api-rest' %}">Desenvolvimento de API -Rest</a>
                                 <a href="{% url 'info_services' 'desenvolvimento-api-restful' %}">Desenvolvimento de API -RestFul</a>
                                 <a href="{% url 'info_services' 'consumo-api' %}">Consumo - API de Terceiros</a>
