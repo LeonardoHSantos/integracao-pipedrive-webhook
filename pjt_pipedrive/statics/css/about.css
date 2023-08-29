@@ -1,0 +1,24 @@
+.content-block-sobre-icons {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+.content-block-sobre-icons {
+    gap: 10px;
+    max-width: 390px;
+    min-height: 185px;
+    flex-direction: column;
+}
+.content-block-sobre-icons i {    
+    font-size: 18px;
+    color: #ffffff;
+}
+.content-block-sobre-icons i {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+}

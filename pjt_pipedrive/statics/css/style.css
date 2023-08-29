@@ -96,13 +96,13 @@ main {
     background-color: rgba(23, 32, 53, 0.76);
 }
 .block-1 {
-    left: 20px;
+    left: 112px;
     background: var(--color-base-1);
-    animation: animation_block_1 5s infinite;
+    animation: animation_block_1 10s infinite;
 }
 .block-3 {
-    right: 20px;
-    animation: animation_block_3 8s infinite;
+    right: 112px;
+    animation: animation_block_3 12s infinite;
 }
 @keyframes animation_block_1 {
     0% {
@@ -112,7 +112,7 @@ main {
     50% {
         transition: 2s;
         border-radius: 40%;
-        transform: translate(10px, -20px);
+        transform: translate(120px, -20px);
     }
     75% {
         border-radius: 50%;
@@ -131,7 +131,7 @@ main {
     50% {
         transition: 2s;
         border-radius: 40%;
-        transform: translate(-100px, -20px);
+        transform: translate(-120px, -20px);
     }
     75% {
         border-radius: 50%;

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="desenvolvimento de softwares e integrações de sistemas.">
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'navbar.css' %}">
     <link rel="stylesheet" href="{% static 'responsive.css' %}">
     <link rel="stylesheet" href="{% static 'cards.css' %}">
+    <link rel="stylesheet" href="{% static 'about.css' %}">
 </head>
 <body>
 
@@ -21,6 +23,16 @@
 
   {% include 'snippets/footer.html' %}
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CJS2HECV98"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CJS2HECV98');
+</script>
+<!-- ---------------------------------------- -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
