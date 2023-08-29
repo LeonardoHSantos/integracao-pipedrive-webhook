@@ -1,3 +1,105 @@
+.container-main-about {
+    min-height: 40vh;
+    max-height: 100%;
+    margin-top: 10px;
+    animation: animation_main_about 2s ease;
+}
+@keyframes animation_main_about {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.block-content-about {
+    min-width: 300px !important;
+    max-width: 100% !important;
+    height: 100%;
+}
+.block-content-about h1 {
+    color: var(--color-base-2);
+}
+.block-content-about p {
+    font-size: 1.120rem;
+    font-weight: 400;
+    line-height: 120%;
+    color: #000;
+}
+
+.block-image-about {
+    width: 100%;
+    box-sizing: border-box;
+}
+.block-image-about img {
+    width: 100%;
+    border-radius: 2px;
+    object-fit: cover;
+}
+.block-content-about:nth-child(1) {
+    min-width: 360px !important;
+    max-width: 100% !important;
+    min-height: 450px;
+}
+.block-content-about:nth-child(2) {
+    min-width: 360px !important;
+    max-width: 100% !important;
+}
+
+/* block-main-about-services */
+
+.block-main-about-services {
+    border-bottom: 2px solid var(--color-base-2) !important;
+}
+
+
+.container-main-about-services h2 {
+    color: var(--color-base-2);
+}
+.block-content-about span {
+    font-weight: 600;
+    color: var(--color-base-2);
+}
+
+@media screen and (max-width: 742px){
+    .container-main-about {
+        width: 100%;
+        flex-direction: column;
+    }
+    .block-content-about,
+    .block-content-about {
+        margin: 10px 0px !important;
+        padding: 3px !important;
+    }
+    .block-content-about:nth-child(1) {
+        min-height: auto !important;
+    }
+    .block-content-about {
+        /* width: 100%; */
+        width: 600px !important;
+        max-width: 95% !important;
+    }
+}
+@media screen and (max-width: 568px){
+    .container-main-about {
+        width: 100%;
+    }
+    .block-content-about,
+    .block-content-about:nth-child(2) {
+        width: 600px !important;
+        min-width:  100% !important;
+        max-width: 100%;
+    }
+}
+
+
+
+
+
+
+
+/* ---------------------------- */
+
 .content-block-sobre-icons {
     display: flex;
     width: 100%;

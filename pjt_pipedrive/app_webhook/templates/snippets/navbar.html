@@ -6,7 +6,7 @@
     <div class="header-navbar">
         <div class="logo-navbar">
             <a href="{% url 'home' %}">
-                <img src="{% static 'rocket-sys-logo-2.png' %}" alt="logo rocketsystem">
+                <img src="{% static 'rocketsys-logo-3.png' %}" alt="logo rocketsystem">
             </a>            
         </div>
 
@@ -30,12 +30,12 @@
                                     <i class="fa-solid fa-code"></i>
                                     <h3>Sistemas</h3>
                                 </div>
-                                <a href="{% url 'info_services' 'django-painel-administrativo' %}">Painel Administrativo</a>
-                                <a href="{% url 'info_services' 'django-sistema-gestao-estoque' %}">Sistemas de Gestão Vendas</a>
-                                <a href="{% url 'info_services' 'django-sistema-gestao-estoque' %}">Sistemas de Gestão Compras</a>
-                                <a href="{% url 'info_services' 'django-sistema-gestao-estoque' %}">Sistemas de Gestão Estoque</a>
-                                <a href="{% url 'info_services' 'django-sistema-gestao-financeira' %}">Sistemas de Gestão Financeira</a>
-                                <a href="{% url 'info_services' 'django-todos-sistemas' %}">ver mais</a>
+                                <a href="{% url 'info_services' 'django-painel-administrativo' %}#sistemas-web">Painel Administrativo</a>
+                                <a href="{% url 'info_services' 'django-sistema-gestao-estoque' %}#sistemas-web">Sistemas de Gestão Vendas</a>
+                                <a href="{% url 'info_services' 'django-sistema-gestao-estoque' %}#sistemas-web">Sistemas de Gestão Compras</a>
+                                <a href="{% url 'info_services' 'django-sistema-gestao-estoque' %}#sistemas-web">Sistemas de Gestão Estoque</a>
+                                <a href="{% url 'info_services' 'django-sistema-gestao-financeira' %}#sistemas-web">Sistemas de Gestão Financeira</a>
+                                <a href="{% url 'info_services' 'django-todos-sistemas' %}#sistemas-web">ver mais</a>
                             </div>
                             <div class="content-block-opcoes-menu">
                                 <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
@@ -77,13 +77,13 @@
                                     <h3>Integrações de Sistemas</h3>
                                 </div>
                                 <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
-                                    <a href="{% url 'info_services' 'integracao-erp' %}">Integração de sistema ERP</a>
+                                    <a href="{% url 'info_services' 'integracao-erp' %}#integracoes-sistemas">Integração de sistema ERP</a>
                                 </div>
                                 <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
-                                    <a href="{% url 'info_services' 'integracao-crm' %}">Integração de sistema CRM</a>
+                                    <a href="{% url 'info_services' 'integracao-crm' %}#integracoes-sistemas">Integração de sistema CRM</a>
                                 </div>
                                 <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
-                                    <a href="{% url 'info_services' 'integracao-apps' %}">Integração com Apps</a>
+                                    <a href="{% url 'info_services' 'integracao-apps' %}#integracoes-sistemas">Integração com Apps</a>
                                 </div>
                             </div>
                             <div class="content-block-opcoes-menu">
@@ -91,9 +91,9 @@
                                     <i class="fa-solid fa-code"></i>
                                     <h3>Desenvolvimento de APIs</h3>
                                 </div>
-                                <a href="{% url 'info_services' 'desenvolvimento-api-rest' %}">Desenvolvimento de API -Rest</a>
-                                <a href="{% url 'info_services' 'desenvolvimento-api-restful' %}">Desenvolvimento de API -RestFul</a>
-                                <a href="{% url 'info_services' 'consumo-api' %}">Consumo - API de Terceiros</a>
+                                <a href="{% url 'info_services' 'desenvolvimento-api-rest' %}#desevolvimento-apis">Desenvolvimento de API -Rest</a>
+                                <a href="{% url 'info_services' 'desenvolvimento-api-restful' %}#desevolvimento-apis">Desenvolvimento de API -RestFul</a>
+                                <a href="{% url 'info_services' 'consumo-api' %}#desevolvimento-apis">Consumo - API de Terceiros</a>
                             </div>
                         </div>
                     </span>
@@ -144,13 +144,17 @@
                             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'person' %}">Person</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'person' %}">Serviços</a>
                         </li>
                         <li class="d-flex flex-column justify-content">
-
-                            <a href="https://github.com/LeonardoHSantos">GitHub</a>
-                            <a href="https://www.linkedin.com/in/leonardosantos2019/">LinkedIn</a>
+                            <a href="{% url 'info_services' 'django-painel-administrativo' %}#sistemas-web">Desenvolvimento Web</a>
+                            <a href="{% url 'info_services' 'django-painel-administrativo' %}#integracoes-sistemas">Integrações de Sistemas</a>
+                            <a href="{% url 'info_services' 'desenvolvimento-api-rest' %}#desevolvimento-apis">Desenvolvimento de APIs</a>
+                            <a href="{% url 'info_services' 'django-todos-sistemas' %}#sistemas-web">ver mais</a>
                             
+
+
+
                             <p>WhatsApp: (41) 9 8841-2653</p>
                             <p>leonardo.hsantos@outlook.com</p>
                         </li>

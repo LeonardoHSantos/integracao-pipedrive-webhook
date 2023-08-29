@@ -27,7 +27,7 @@ def infoServices(request, service_name):
         context = {
             "service_name": service_name
         }
-        return render(request, "app/home.html", context=context)
+        return render(request, "app/infoServices.html", context=context)
 
 
 def infoPerson(request, id_person):

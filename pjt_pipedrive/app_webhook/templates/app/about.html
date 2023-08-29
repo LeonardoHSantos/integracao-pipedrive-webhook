@@ -4,10 +4,27 @@
 
 {% block content %}
 
-<main class="container">
-    <div class="d-flex flex-row m-5">
+
+<main>
+    <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about">
+        <div class="d-flex flex-column mt-4 justify-content-start align-items-start p-3 w-48 block-content-about">
+            <h1>Sobre a RocketSystem</h1>
+            <p>Oferecemos soluções de qualidade para as suas necessidades de desenvolvimento web, integrações de sistemas e API's.</p>
+            <p>Nossos serviços personalizados promovem maior flexibilidade para trabalhar com nossos clientes. Seja qual for o seu projeto, podemos trabalhar juntos e transformar a sua ideia em realidade.</p>
+        </div>
+
+        <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
+            <div class="block-image-about">
+                <img src="{% static 'equipe-about.jpg' %}" alt="serviços">
+            </div>
+        </div>
+    </div>
+
+</main>
 
 
+<div class="container">
+    <div class="d-flex flex-row m-1">
         <div class="content-block-sobre-icons">
             <h3>Contato</h3>
             <div class="block-icons">
@@ -24,6 +41,5 @@
             </div>
         </div>
     </div>
-</main>
-  
+</div>
 {% endblock %}
