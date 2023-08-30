@@ -1,7 +1,9 @@
+#container-info-services {
+    margin-top: 20px !important;
+}
 .container-main-about {
     min-height: 40vh;
     max-height: 100%;
-    margin-top: 10px;
     animation: animation_main_about 2s ease;
 }
 @keyframes animation_main_about {
@@ -25,14 +27,20 @@
     font-weight: 400;
     line-height: 120%;
     color: #000;
+    border: 0px;
+    border-bottom: solid;
+    border-bottom-width: 2px !important;
+    border-image: linear-gradient(to right, #ff01f5, #fef104, #fff) 1;
 }
 
 .block-image-about {
     width: 100%;
+    display: flex;
     box-sizing: border-box;
 }
 .block-image-about img {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     border-radius: 2px;
     object-fit: cover;
 }
@@ -49,7 +57,14 @@
 /* block-main-about-services */
 
 .block-main-about-services {
-    border-bottom: 2px solid var(--color-base-2) !important;
+    padding: 20px 0px;
+    border-bottom: 2px solid transparent !important;
+}
+.block-main-about-services h2 {
+    border: 0px;
+    border-bottom: solid;
+    border-bottom-width: 5px !important;
+    border-image: linear-gradient(to right, #ff01f5, #fef104, #fff) 1;
 }
 
 
@@ -61,18 +76,51 @@
     color: var(--color-base-2);
 }
 
+/* BORDAS PERSONALIZADAS */
+.border-custom-right-bottom {
+    border: 3px;
+    border-bottom: 2px;
+    border-radius: 0px 10px 10px 0px;
+    border-style: solid;
+    border-color: var(--color-base-2);
+    border-left-color: transparent;
+    margin-right: -2.4px;
+    margin-top: -2.7px;
+    flex-direction: row-reverse;
+}
+.border-custom-left-bottom {
+    border: 3px ;
+    border-top: 2px;
+    border-radius: 10px 0px 0px 10px;
+    border-style: solid;
+    border-color: var(--color-base-2);
+    border-right-color: transparent;
+    margin-left: -2.4px;
+    margin-top: -2.4px;
+}
+
 @media screen and (max-width: 742px){
+    
     .container-main-about {
         width: 100%;
-        flex-direction: column;
+        padding: 0px 23px !important;
+        flex-direction: row;
     }
-    .block-content-about,
+
     .block-content-about {
         margin: 10px 0px !important;
         padding: 3px !important;
     }
+    .block-main-about-services {
+        padding: 3px 0px;
+    }
+    .block-image-about img {
+        width: 100%;
+    }
+    
     .block-content-about:nth-child(1) {
         min-height: auto !important;
+        padding: 23px !important;
     }
     .block-content-about {
         /* width: 100%; */

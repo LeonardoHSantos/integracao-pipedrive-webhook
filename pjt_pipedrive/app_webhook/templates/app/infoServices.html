@@ -4,125 +4,109 @@
 
 {% block content %}
 
-<main>
-    <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about">
-        <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
-            <h1>Nossos Serviços</h1>
-            <p>Agilidade e qualidade podem andar juntos.</p>
-            <p>Confira nossos serviços e tenha uma ótima experiência com a gente.</p>
-            <p>Entre em contato com a nossa equipe e vamos conversar sobre as suas expectativas.</p>
-        </div>
-        
-        <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
-            <div class="block-image-about">
-                <img src="{% static 'equipe-about.jpg' %}" alt="serviços">
+<main id="container-info-services">
+    <div class="px-3">
+        <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about   border-custom-right-bottom" style="flex-direction: row;">
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
+                <h1>Nossos Serviços</h1>
+                <p>Agilidade e qualidade podem andar juntos.</p>
+                <p>Confira nossos serviços e tenha uma ótima experiência com a gente.</p>
+                <p>Entre em contato com a nossa equipe e vamos conversar sobre as suas expectativas.</p>
             </div>
+            
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
+                <div class="block-image-about">
+                    <img src="{% static 'equipe-about.jpg' %}" alt="serviços">
+                </div>
+            </div>
+            <a id="integracoes-sistemas"></a>
         </div>
-        <a id="integracoes-sistemas"></a>
     </div>
 
 
-    <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about">
-        <div class="row w-100 block-main-about-services">
-            <h2>Integrações</h2>
-        </div>
-        <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
-            <p><span>+</span> integramos você com as melhores tecnologias para acelerar o fluxo de trabalho da sua empresa</p>
-            <p><span>+</span> ferramentas de visualização de dados</p>
-            <p><span>+</span> ERP</p>
-            <p><span>+</span> CRM</p>
-            <p><span>+</span> banco de dados</p>
-            <p><span>+</span> outros aplicativos</p>
-        </div>
-        <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
-            <div class="block-image-about">
-                <img src="{% static 'equipe-dev2.jpg' %}" alt="serviços">
-            </div>
-        </div>
-        <a id="sistemas-web"></a>
-    </div>
     <!-- ---- -->
-    <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about">
-        
-        <div class="row w-100 block-main-about-services">
-            <h2>Sistemas WEB</h2>
-        </div>
-        <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
-            <div class="block-image-about">
-                <img src="{% static 'equipe-dev1.jpg' %}" alt="serviços">
+    <div class="px-3">
+        <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about border-custom-left-bottom ">
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
+                <div class="row w-100 block-main-about-services">
+                    <h2>Integrações</h2>
+                </div>
+                <p><span>+</span> integramos você com as melhores tecnologias para acelerar o fluxo de trabalho da sua empresa</p>
+                <p><span>+</span> ferramentas de visualização de dados</p>
+                <p><span>+</span> outros aplicativos</p>
+                <p><span>+</span> banco de dados</p>
+                <p><span>+</span> ERP</p>
+                <p><span>+</span> CRM</p>
             </div>
-        </div>
-        <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
-            <p><span>+</span> aplicações personalizadas do jeito que você precisa</p>
-            <p><span>+</span> vamos desenvolver sua aplicação web juntos</p>
-            <p><span>+</span> desenvolvimento web de forma ágil</p>
-            <p><span>+</span> sem burocrácias; direto ao ponto</p>
-        </div>
-        <a id="desevolvimento-apis"></a>
-    </div>
-    <!-- ---- -->
-    <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about">
-        <div class="row w-100 block-main-about-services">
-            <h2>Desenvolvimento de API</h2>
-        </div>
-        <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
-            <p><span>+</span> vamos contruir juntos serviços escaláveis</p>
-            <p><span>+</span> sem burocrácias</p>
-            <p><span>+</span> direto ao ponto</p>
-        </div>
-        <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
-            <div class="block-image-about">
-                <img src="{% static 'equipe-dev3.jpg' %}" alt="serviços">
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
+                <div class="block-image-about">
+                    <img src="{% static 'equipe-dev2.jpg' %}" alt="serviços">
+                </div>
             </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-    <!-- <div class="container-fluid d-flex justify-content-center align-items-center mt-3 px-3 gap-1 flex-wrap container-main-about-services">
-        <div class="row w-100 block-main-about-services">
-            <h2>Integrações</h2>
-        </div>
-        <div class="d-flex flex-column mt-4 justify-content-start align-items-start px-3 w-100 block-content-about">
-            <p><span>+</span> integramos você com as melhores tecnologias para acelerar o fluxo de trabalho da sua empresa</p>
             <a id="sistemas-web"></a>
-            <p><span>+</span> ferramentas de visualização de dados</p>
-            <p><span>+</span> ERP</p>
-            <p><span>+</span> CRM</p>
-            <p><span>+</span> banco de dados</p>
-            <p><span>+</span> outros aplicativos</p>
         </div>
-    </div> -->
-    
-    <!-- <div class="container-fluid d-flex justify-content-center align-items-center mt-3 px-3 gap-1 flex-wrap container-main-about-services">
-        <div class="row w-100 block-main-about-services">
-            <h2>Sistemas WEB</h2>
-        </div>
-        <div class="d-flex flex-column mt-4 justify-content-start align-items-start px-3 w-100 block-content-about">
+    </div>
+    <!-- ---- -->
+    <div class="px-3">
+        <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about border-custom-right-bottom ">
+            
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
+                <div class="row w-100 block-main-about-services">
+                    <h2>Sistemas WEB</h2>
+                </div>
+                <p><span>+</span> aplicações personalizadas do jeito que você precisa</p>
+                <p><span>+</span> vamos desenvolver sua aplicação web juntos</p>
+                <p><span>+</span> desenvolvimento web de forma ágil</p>
+                <p><span>+</span> sem burocrácias; direto ao ponto</p>
+            </div>
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
+                <div class="block-image-about">
+                    <img src="{% static 'equipe-dev1.jpg' %}" alt="serviços">
+                </div>
+            </div>
             <a id="desevolvimento-apis"></a>
-            <p><span>+</span> aplicações personalizadas do jeito que você precisa</p>
-            <p><span>+</span> vamos desenvolver sua aplicação web juntos</p>
-            <p><span>+</span> desenvolvimento web de forma ágil</p>
-            <p><span>+</span> sem burocrácias; direto ao ponto</p>
         </div>
-    </div> -->
-
-    <!-- <div class="container-fluid d-flex justify-content-center align-items-center mt-3 px-3 gap-1 flex-wrap container-main-about-services">
-        <div class="row w-100 block-main-about-services">
-            <h2>Desenvolvimento de API</h2>
+    </div>
+    <!-- ---- -->
+    <div class="px-3">
+        <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about border-custom-left-bottom ">
+            
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
+                <div class="row w-100 block-main-about-services">
+                    <h2>Desenvolvimento de API</h2>
+                </div>
+                <p><span>+</span> vamos contruir juntos serviços escaláveis</p>
+                <p><span>+</span> sem burocrácias</p>
+                <p><span>+</span> direto ao ponto</p>
+            </div>
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
+                <div class="block-image-about">
+                    <img src="{% static 'equipe-dev3.jpg' %}" alt="serviços">
+                </div>
+            </div>
+            <a id="manutencao-sistemas"></a>
         </div>
-        <div class="d-flex flex-column mt-4 justify-content-start align-items-start px-3 w-100 block-content-about">
-            <p><span>+</span> vamos contruir juntos serviços escaláveis</p>
-            <p><span>+</span> sem burocrácias</p>
-            <p><span>+</span> direto ao ponto</p>
+    </div>
+    <!-- ---- -->
+    <div class="px-3">
+        <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about border-custom-right-bottom ">
+            
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
+                <div class="row w-100 block-main-about-services">
+                    <h2>Manuntenção/Criação de Banco de Dados</h2>
+                </div>
+                <p><span>+</span> entendimento das regras de negócios da sua empresa</p>
+                <p><span>+</span> levantamento e definição de requisitos</p>
+                <p><span>+</span> criação/manuntenção de banco de dados</p>
+            </div>
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-48 block-content-about">
+                <div class="block-image-about">
+                    <img src="{% static 'equipe-dev4.jpg' %}" alt="serviços">
+                </div>
+            </div>
+            <a id="desevolvimento-apis"></a>
         </div>
-    </div> -->
-
+    </div>
 </main>
 
 {% endblock %}

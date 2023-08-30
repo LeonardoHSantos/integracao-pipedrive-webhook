@@ -1,5 +1,6 @@
 #navbar-mobile {
     display: none;
+    margin-top: 10px;
 }
 header,
 .header-navbar,
@@ -11,11 +12,11 @@ header,
 }
 header {
     position: sticky;
-    top: 0;
+    top: -1px;
     height: 65px;
     z-index: 9999;
     align-items: center;
-    padding: 5px;
+    padding: 4px 10px;
     background-color: white;
 }
 .header-navbar {
@@ -86,6 +87,27 @@ header {
     color: white;
     text-decoration: none;
 }
+
+.block-user-navbar {
+    transform: translate(-25px, 0px);
+}
+
+.block-user-navbar a,
+.block-user-navbar p {
+    border-radius: 5px;
+    padding: 2px 17px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.block-user-navbar a:nth-child(2) {
+    border: 1px solid white;
+}
+
+
 .container-navbar ul li:hover .menu-links i  {
     transform: rotate(180deg);
     /* color: var(--color-base-2);

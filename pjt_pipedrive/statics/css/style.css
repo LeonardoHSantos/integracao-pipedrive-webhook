@@ -1,12 +1,13 @@
 :root {
+    --color-base-0: #ad93f0;
     --color-base-1: #7e29ce;
     --color-base-2: #7341f2;
-
     --color-ligth-1: #f4f2fb;
-
+    --color-ligth-2: #ffc870;
     --box-shadow-1: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
+/* TAMANHOS PERSONALIZADOS */
 .w-48 {
     width: 48%!important;
 }
