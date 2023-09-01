@@ -52,6 +52,17 @@
         gap: 12px !important;
         justify-content: center !important;
     }
+    .block-1,
+    .block-3 {
+        width: 150px;
+        height: 150px;
+    }
+    .block-1 {
+        left: 18px;
+    }
+    .block-3 {
+        right: 18px;
+    }
 }
 @media screen and (min-width: 568px) {
     
@@ -81,12 +92,7 @@
     .card:not(:first-child){
         display: none;
     }
-    .block-2 h3 {
-        border: 5px #ffffff;
-        border-style: double;
-        border-radius: 18px 2px;
-        color: #d1d1d1;
-    }
+    
     .container-form-custom {
         width: 100% !important;
         margin: 0 !important;
@@ -95,5 +101,18 @@
     .container-form-custom-info-person {
         margin: 0 !important;
         margin-top: 130px !important;
+    }
+    .block-1,
+    .block-3 {
+        width: 100px;
+        height: 100px;
+    }
+    .block-1 {
+        left: 18px !important;
+        margin-top: 134px !important;
+    }
+    .block-3 {
+        right: 18px !important;
+        margin-top: -134px !important;
     }
 }

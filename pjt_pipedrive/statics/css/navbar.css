@@ -1,6 +1,7 @@
 #navbar-mobile {
     display: none;
     margin-top: 10px;
+    max-width: 100%;
 }
 header,
 .header-navbar,
@@ -17,7 +18,7 @@ header {
     z-index: 9999;
     align-items: center;
     padding: 4px 10px;
-    background-color: white;
+    background-color: transparent;
 }
 .header-navbar {
     align-items: center;

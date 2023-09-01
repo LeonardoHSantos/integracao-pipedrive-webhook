@@ -28,7 +28,13 @@ def infoServices(request, service_name):
             "service_name": service_name
         }
         return render(request, "app/infoServices.html", context=context)
-
+# ---
+def detailsServices(request, service_name):
+    if request.method == "GET":
+        context = {
+            "service_name": service_name
+        }
+        return render(request, "app/detailsServices.html", context=context)
 
 def infoPerson(request, id_person):
     API = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN)
