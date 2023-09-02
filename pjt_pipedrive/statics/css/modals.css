@@ -1,0 +1,51 @@
+.modal-services-contact {
+    display: none;
+}
+.modal-services-contact.active {
+    display: flex;
+    max-width: 550px;
+    min-height: auto 300px;
+    background-color: #fff;
+    box-shadow: var(--box-shadow-1);
+    border-radius: 5px;
+    position: absolute;
+    /* top: 50%; */
+    left: 50%;
+    transform: translate(-50%, 0%);
+    pointer-events: all !important;
+    opacity: 1 !important;
+    z-index: 9999 !important;
+    animation: animation_modal_services .3s ease-in-out;
+}
+@keyframes animation_modal_services {
+    from {
+        transform: translate(-50%, -35%);
+    }
+    to {
+        transform: translate(-50%, -45%);
+    }
+}
+
+body.acitve-modal {
+    background-color: #c9cbcb !important;
+    pointer-events: none;
+}
+body.acitve-modal .block-image-about > img {
+    opacity: .3 !important;
+}
+
+.btn-close-modal i {
+    width: 25px;
+    height: 25px;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+.btn-close-modal i:hover {
+    font-weight: 800;
+    background-color: #f9f6fa;
+}

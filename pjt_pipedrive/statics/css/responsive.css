@@ -63,6 +63,11 @@
     .block-3 {
         right: 18px;
     }
+    .modal-services-contact {
+        max-width: 87% !important;
+        transform: translate(-51%, -45%) !important;
+
+    }
 }
 @media screen and (min-width: 568px) {
     

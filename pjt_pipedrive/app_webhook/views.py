@@ -3,10 +3,14 @@ from django.shortcuts import render
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
+from django.contrib.auth import login, logout
+
 from .models import Deals, Person
 from api.prepare_data import PrepareData
 from api.api_pipedrive import API_Pipedrive
 from config_app import API_TOKEN, COMPANY_DOMAIN
+
+from .forms import FormContactServicePipedrive
 
 
 def home(request):
@@ -29,10 +33,11 @@ def infoServices(request, service_name):
         }
         return render(request, "app/infoServices.html", context=context)
 # ---
-def detailsServices(request, service_name):
+def detailsServices(request):
+    form = FormContactServicePipedrive()
     if request.method == "GET":
         context = {
-            "service_name": service_name
+            "form_servive_pipedrive": form,
         }
         return render(request, "app/detailsServices.html", context=context)
 

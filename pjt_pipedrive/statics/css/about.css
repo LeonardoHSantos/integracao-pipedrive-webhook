@@ -14,13 +14,19 @@
         opacity: 1;
     }
 }
-.block-content-about {
+.block-content-about,
+.block-content-datails-services {
     min-width: 300px !important;
     max-width: 100% !important;
     height: 100%;
 }
-.block-content-about h1 {
+.block-content-about h1,
+.block-content-datails-services h1,
+.block-content-datails-services h2 {
     color: var(--color-base-2);
+}
+.block-content-datails-services h2 {
+    font-weight: 600;
 }
 .block-content-about p {
     font-size: 1.120rem;
@@ -56,7 +62,8 @@
 
 /* block-main-about-services */
 
-.block-main-about-services {
+.block-main-about-services,
+.block-main-datails-services {
     padding: 20px 0px;
     border-bottom: 2px solid transparent !important;
 }
@@ -66,16 +73,29 @@
     border-bottom-width: 5px !important;
     border-image: linear-gradient(to right, #ff01f5, #fef104, #fff) 1;
 }
+.block-main-datails-services p {
+    font-weight: 400;
+    font-style: italic;
+}
 
 
 .container-main-about-services h2 {
     color: var(--color-base-2);
 }
+
 .block-content-about span {
     font-weight: 600;
     color: var(--color-base-2);
 }
-
+.block-content-datails-services span {
+    color: #00b090;
+    font-weight: 800;
+}
+.block-content-datails-services p b {
+    color: transparent;
+    background-image: linear-gradient(to left, #e403ff, #004eff);
+    -webkit-background-clip: text;
+}
 /* BORDAS PERSONALIZADAS */
 .border-custom-right-bottom {
     border: 3px;
@@ -111,7 +131,8 @@
         margin: 10px 0px !important;
         padding: 3px !important;
     }
-    .block-main-about-services {
+    .block-main-about-services,
+    .block-main-datails-services {
         padding: 3px 0px;
     }
     .block-image-about img {

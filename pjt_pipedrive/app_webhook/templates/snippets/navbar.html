@@ -28,14 +28,14 @@
                                     <i class="fa-solid fa-code"></i>
                                     <h3>Sistemas</h3>
                                 </div>
-                                <a href="{% url 'info_services' 'desenvolvimento-sistemas-web' %}#sistemas-web">Desenvolvimento de Sistemas Web</a>
+                                <a href="{% url 'details_services' %}#sistemas-web">Desenvolvimento de Sistemas Web</a>
                           
                                 <div class="container-fluid d-flex gap-3 mt-4 align-items-center justify-content-start">
                                     <i class="fa-solid fa-gears"></i>
                                     <h3>Manuntenção de Sistemas</h3>
                                 </div>
-                                <a href="{% url 'info_services' 'manutencao-sistemas-web' %}#manutencao-sistemas">Manutenção Sistema Web</a>
-                                <a href="{% url 'info_services' 'manutencao-banco-de-dados' %}#manutencao-sistemas">Manutenção Banco de Dados</a>
+                                <a href="{% url 'details_services' %}#manutencao-sistemas">Manutenção Sistema Web</a>
+                                <a href="{% url 'details_services' %}#manutencao-sistemas">Manutenção Banco de Dados</a>
                             </div>
 
                             <div class="content-block-opcoes-menu">
@@ -44,7 +44,7 @@
                                     <h3>Integrações</h3>
                                 </div>
                                 <div class="container-fluid d-flex gap-3 align-items-center justify-content-start">
-                                    <a href="{% url 'info_services' 'integracao-sistemas' %}#integracoes-sistemas">Integração ERP, CRM, APPs</a>
+                                    <a href="{% url 'details_services' %}#integracoes-sistemas">Integração ERP, CRM, APPs</a>
                                 </div>
 
                                 <div class="content-block-opcoes-menu">
@@ -52,7 +52,7 @@
                                         <i class="fa-solid fa-code"></i>
                                         <h3>Desenvolvimento de APIs</h3>
                                     </div>
-                                    <a href="{% url 'info_services' 'desenvolvimento-apis' %}#desevolvimento-apis">Desenvolvimento de APIs</a>
+                                    <a href="{% url 'details_services' %}#desevolvimento-apis">Desenvolvimento de APIs</a>
                                 </div>
                             </div>
                         </div>
@@ -65,20 +65,32 @@
                     </div>
                     <span class="menu-opcoes-dropdown translate-2 w-50">
                         
-                        <h2>Fale com a gente</h2>
+                        <h2>Contato</h2>
 
                         <div class="block-opcoes-menu justify-content-start">
-                            <div class="content-block-opcoes-menu">
-                                <h3>Github</h3>
+                            <div class="content-block-opcoes-menu gap-4">
+                                <!-- <h3>Github</h3> -->
                                 <div class="container-fluid d-flex gap-1 align-items-center justify-content-start">
                                     <i class="fa-brands fa-github"></i>
                                     <a href="https://github.com/LeonardoHSantos" target="_blank">LeonardoHSantos</a>
                                 </div>
-                                <h3 style="color: #0a66c2;">Linkedin</h3>
+                                <!-- <h3 style="color: #0a66c2;">Linkedin</h3> -->
                                 <div class="container-fluid d-flex gap-1 align-items-center justify-content-start">
                                     <i class="fa-brands fa-linkedin"></i>
                                     <a href="https://www.linkedin.com/in/leonardosantos2019/" target="_blank">Leonardo H Santos</a>
                                 </div>
+                                <!-- <h3>WhatsApp</h3> -->
+                                <div class="container-fluid d-flex gap-1 align-items-center justify-content-start">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                    <a href="https://api.whatsapp.com/send/?phone=5541988412653&text&type=phone_number&app_absent=0" target="_blank">(41) 9 8841-2653</a>
+                                </div>
+                                <!-- <h3>E-mail</h3> -->
+                                <div class="container-fluid d-flex gap-1 align-items-center justify-content-start">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <a href="mailto:leonardo.hsantos@outlook.com?subject=Assunto do email para RocketSystem.tech...&body=Escrevo este email para falar sobre...">leonardo.hsantos@outlook.com</a>
+
+                                </div>
+                                
                             </div>
                             
                         </div>
@@ -142,7 +154,7 @@
                             <a class="col w-50" href="{% url 'register' %}">cadastro</a>
                         {% endif %}
                     </div>
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pt-4">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
@@ -150,17 +162,15 @@
                             <a class="nav-link active" aria-current="page" href="{% url 'about' %}">Sobre</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'person' %}">Serviços</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'details_services' %}">Serviços</a>
                         </li>
-                        <li class="d-flex flex-column justify-content">
-                            <a href="{% url 'info_services' 'django-painel-administrativo' %}#sistemas-web">Desenvolvimento Web</a>
-                            <a href="{% url 'info_services' 'django-painel-administrativo' %}#integracoes-sistemas">Integrações de Sistemas</a>
-                            <a href="{% url 'info_services' 'desenvolvimento-api-rest' %}#desevolvimento-apis">Desenvolvimento de APIs</a>
-                            <a href="{% url 'info_services' 'django-todos-sistemas' %}#sistemas-web">ver mais</a>
-                            
-                            <p>WhatsApp: (41) 9 8841-2653</p>
+                        <li class="d-flex flex-column justify-content pt-3">                            
+                            <a href="https://api.whatsapp.com/send/?phone=5541988412653&text&type=phone_number&app_absent=0" target="_blank">WhatsApp: (41) 9 8841-2653</a>
+                        </li>
+                        <li class="d-flex flex-column justify-content py-3">                            
                             <p>leonardo.hsantos@outlook.com</p>
                         </li>
+                        
                         {% if user.is_authenticated %}
                             <li>
                                 <div class="menu-links">

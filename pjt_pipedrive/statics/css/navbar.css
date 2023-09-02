@@ -3,6 +3,13 @@
     margin-top: 10px;
     max-width: 100%;
 }
+#navbar-mobile nav,
+#offcanvasDarkNavbar {
+    background-color: var(--color-base-2) !important;
+}
+#offcanvasDarkNavbar a {
+    color: white;
+}
 header,
 .header-navbar,
 .container-navbar,
@@ -229,7 +236,7 @@ header {
 
 .content-block-opcoes-menu > div > i {
     font-size: 22px !important;
-    color: var(--color-base-2) !important;
+    color: var(--color-base-2);
 }
 .block-icons i i {    
     font-size: 18px;
@@ -246,12 +253,15 @@ header {
     border-radius: 7px;
 }
 
-.block-icons > .fa-linkedin-in {
-    background-color: #0a66c2;
+.fa-github {
+    color: #1e1d1e !important;
 }
-.block-icons > .fa-whatsapp {
-    background-color: #33d670;
+.fa-linkedin {
+    color: #0a66c2 !important;
 }
-.block-icons > .fa-envelope {
-    background-color: #7b00ed;
+.fa-whatsapp {
+    color: #33d670 !important;
+}
+.fa-envelope {
+    color: #7b00ed;
 }
