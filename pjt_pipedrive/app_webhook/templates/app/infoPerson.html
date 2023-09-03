@@ -4,17 +4,24 @@
 
 {% block content %}
 
-<div class="container container-form-custom-info-person" style="margin: 100px auto; min-height: 60vh;">
+<div class="container container-form-custom-info-person" style="margin: 40px auto; min-height: 60vh;">
     <div class="container w-50 container-form-custom">
         <div class="row w-100 d-flex align-items-center">
-            <h3 class="col-6 col-sm-3 w-75">Pipedrive - Detalhes Person</h3>
-            <a href="{% url 'person' %}" class="col-6 col-sm-3 w-25 text-end link">voltar</a>
+            <div class="w-25 block-btn-return">
+                <i class="fa-solid fa-chevron-left"></i>
+                <a href="{% url 'person' %}" class="col-6 col-sm-3  text-end link">voltar</a>
+            </div>
+            <h3 class="col-6 col-sm-3 w-75">Pipedrive/person/{{data.id.value}}</h3>
         </div>
         {% if not_found_data %}
         <p>Nenhum registro encontrado.</p>
         {% else %}
-            <a href="{% url 'detele_person' data.id.value  %}" class="col-6 col-sm-3 w-25 text-end link">deletar</a>
-            <p style="font-size: 14px;">Person ID: {{data.id.value}}</p>
+            <div class="w-100 d-flex justify-content-end align-items-center">
+                <a href="{% url 'detele_person' data.id.value  %}" class="btn-delete-1">
+                    <span>deletar</span>
+                    <span><i class="fa-solid fa-trash"></i></span>
+                </a>
+            </div>
             <form action="" method="POST" class="container w-100">
                 {% csrf_token %}
                 <div class="row d-flex justify-content-center px-2 mb-2">
