@@ -221,10 +221,10 @@ def deletePerson(request, id_person):
     API = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN)
     if request.method == "GET":
         person = API.delete_person(id_person=int(id_person))
-        # delPerson = Person.objects.filter(
-        #     current_person_id=id_person
-        # ).delete()
-        # print(delPerson)
+        delPerson = Person.objects.filter(
+            current_person_id=id_person
+        ).delete()
+        print(delPerson)
         if person["code"] == 200:
             return redirect("person")
         else:
@@ -251,7 +251,7 @@ def PipedrivePerson(request):
             if body["meta"]["action"] == "delete":
                 try:
                     Person.objects.filter(
-                        current_person_id=body["meta"]["id"]
+                        current_person_id=int(body["meta"]["id"])
                     ).delete()
                     print(f'DELETE PERSON SUCESSS | PERSON_ID: {body["meta"]["id"]}')
                 except Exception as e:
