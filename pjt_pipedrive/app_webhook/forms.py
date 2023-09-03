@@ -30,7 +30,7 @@ class FormContactServicePipedrive(forms.Form):
             "id": "whatsapp",
             "name": "whatsapp",
             "class": "form-control",
-            "placeholder": "(00) 9 9999-9999"
+            "placeholder": "(00) 9 0000-0000"
         }
     ))
     email = forms.EmailField(max_length=55,  required=False, widget=forms.EmailInput(
