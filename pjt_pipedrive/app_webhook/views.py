@@ -36,10 +36,115 @@ def infoServices(request, service_name):
 def detailsServices(request):
     form = FormContactServicePipedrive()
     if request.method == "GET":
+        personFields = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN).get_fields()
+        print(personFields)
         context = {
             "form_servive_pipedrive": form,
         }
         return render(request, "app/detailsServices.html", context=context)
+    # ---
+    elif request.method == "POST":
+        form = FormContactServicePipedrive(request.POST)
+        print(f"VALIDATE FORM: {form.is_valid()}")
+        print(request.POST)
+
+        check_field_doc = True
+        check_field_contact = True
+
+        if form.is_valid():
+            p = dict(request.POST)
+            print(p)
+
+            data = {
+                "name": p["name"][0],
+                "service_name_contact": p["options-modal-contact-1"][0],
+                "cpf": p["cpf"][0],
+                "cnpj": p["cnpj"][0],
+                "whatsapp": p["whatsapp"][0],
+                "email": p["email"][0],
+            }
+
+            personFields = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN).get_fields()
+            print(personFields)
+            obj_create = {
+                "name": p["name"][0],
+                personFields["service_name_contact"]: p["options-modal-contact-1"][0],
+                "label": 6,
+                "phone": [],
+                "email": [],
+            }
+
+            if len(p["cpf"][0]) == 14:
+                doc_lead = PrepareData.validateCPF(data=p["cpf"][0])
+                if doc_lead is not None:
+                    check_field_doc = False
+                    obj_create.update(
+                    {
+                        personFields["cpf"]: doc_lead
+                    })
+                    # data.update({"cpf_lead": doc_lead})
+            elif len(p["cnpj"][0]) == 18:
+                doc_lead = PrepareData.validateCNPJ(data=p["cnpj"][0])
+                if doc_lead is not None:
+                    check_field_doc = False
+                    obj_create.update(
+                    {
+                        personFields["cnpj"]: doc_lead
+                    })
+                    # data.update({"cnpj_lead": doc_lead})
+            # # ---
+            if len(p["whatsapp"][0]) == 16:
+                contact_lead = PrepareData.validatePHONE(data=p["whatsapp"][0])
+                if contact_lead is not None:
+                    check_field_contact = False
+                    obj_create.get("phone").append(
+                    {
+                        "label": "work",
+                        "value": contact_lead
+                    })
+                    # data.update({"phone_lead": contact_lead})
+            else:
+                if len(p["email"][0]) > 5:
+                    check_field_contact = False
+                    obj_create.get("email").append(
+                    {
+                        "label": "work",
+                        "value": p["email"][0]
+                    })
+                    # data.update({"email_lead": p["email"][0]})
+            
+            
+            if check_field_contact or check_field_doc:
+                if check_field_contact:
+                    form.fields['whatsapp'].widget.attrs.update({'data-check-input': 'error-input'})
+                    form.fields['email'].widget.attrs.update({'data-check-input': 'error-input'})
+                else:
+                    form.fields['whatsapp'].widget.attrs.update({'data-check-input': 'valid-input'})
+                    form.fields['email'].widget.attrs.update({'data-check-input': 'valid-input'})
+                
+                if check_field_doc:
+                    form.fields['cpf'].widget.attrs.update({'data-check-input': 'error-input'})
+                    form.fields['cnpj'].widget.attrs.update({'data-check-input': 'error-input'})
+                else:
+                    form.fields['cpf'].widget.attrs.update({'data-check-input': 'valid-input'})
+                    form.fields['cnpj'].widget.attrs.update({'data-check-input': 'valid-input'})
+
+            else:
+                form = FormContactServicePipedrive()
+
+                print("************************* \n\n")
+                print(obj_create)
+                API = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN)
+                API.create_person(data=obj_create)
+
+        context = {
+            "check_field_doc": check_field_doc,
+            "check_field_contact": check_field_contact,
+            "form_servive_pipedrive": form,
+        }
+        return render(request, "app/detailsServices.html", context=context)
+    
+
 
 def infoPerson(request, id_person):
     API = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN)
@@ -70,6 +175,7 @@ def infoPerson(request, id_person):
 
         obj_update = {
             "name": r.get("name")[0],
+            "label": 5,
             "phone": [],
             "email": [],
         }
@@ -131,6 +237,8 @@ def PipedrivePerson(request):
             current_phone = current["phone"][0]["value"]
             current_add_time = PrepareData.convert_string_to_datetime(current["add_time"])
             current_update_time = PrepareData.convert_string_to_datetime(current["update_time"])
+            current_person_cpf = current["734947ead36fa24525e3bdc1eb6e89eb73542ebd"]
+            current_person_cnpj = current["b0ea791a0634c39260148b77d5df16b137817c0b"]
 
             print(f"""
             --> current_id: {current_id} | {type(current_id)}
@@ -154,6 +262,8 @@ def PipedrivePerson(request):
                 query_person.current_person_phone = current_phone
                 query_person.current_person_add_time = current_add_time
                 query_person.current_person_update_time = current_update_time
+                query_person.current_person_cpf = current_person_cpf
+                query_person.current_person_cnpj = current_person_cnpj
                 query_person.save()
                 print(" --------->>> registro atualizado - person ")
             else:
@@ -165,7 +275,9 @@ def PipedrivePerson(request):
                     current_person_email=current_email,
                     current_person_phone=current_phone,
                     current_person_add_time=current_add_time,
-                    current_person_update_time=current_update_time
+                    current_person_update_time=current_update_time,
+                    current_person_cpf=current_person_cpf,
+                    current_person_cnpj=current_person_cnpj
                 )
                 # new_person.save()
                 print("\n\n --------->>> registro criado - person ")

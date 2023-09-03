@@ -10,6 +10,9 @@ class Person(models.Model):
     current_person_phone = models.CharField(default="-", max_length=25)
     current_person_add_time = models.DateTimeField(default=timezone.now)
     current_person_update_time = models.DateTimeField(default=timezone.now)
+    current_person_cpf = models.CharField(default="-", max_length=14)
+    current_person_cnpj = models.CharField(default="-", max_length=18)
+
 
 class Deals(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE, blank=True, null=True)

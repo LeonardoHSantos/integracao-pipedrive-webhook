@@ -8,8 +8,8 @@
 }
 
 /* TAMANHOS PERSONALIZADOS */
-.w-27 {
-    width: 27% !important;
+.w-26 {
+    width: 26%;
     min-width: 100px !important;
     max-width: 100% !important;
     gap: 4px;
@@ -21,13 +21,16 @@
 }
 
 /* CORES PERSONALIZADOS */
+
 .btn-outline-primary {
-    color: var(--color-base-2);
+    color: white;
     border-color: var(--color-base-2);
+    background-color: var(--color-base-2);
 }
 .btn-outline-primary:hover {
     color: white;
-    background-color: var(--color-base-2);
+    border-color: var(--color-base-1);
+    background-color: var(--color-base-1);
 }
 .btn-outline-primary {
     --bs-btn-color: var(--color-base-2);

@@ -4,23 +4,22 @@
 
 {% block content %}
 <main id="container-info-services">
-    
     <!-- ---- -->
     <div class="d-flex flex-column align-items-center justify-content-center text-center w-100 py-3"
         style="color: var(--color-base-2);">
-
-        <!-- <h1>Serviços</h1>      -->
 
         <div class="row w-100 m-2 p-1 py-3 modal-services-contact" id="modal-services-contact">
             <div class="w-100 d-flex justify-content-end btn-close-modal">
                 <i class="fa-solid fa-xmark" data-target="BTN_CLOSE_servicePipedriveModal"></i>
             </div>
-            <form action="">
+            <form action="{% url 'details_services' %}" method="POST">
                 {% csrf_token %}
 
+                <h3>solicitação de serviço</h3>
+
                 <div class="form-group">
-                    <label class="row text-start px-3" for="name">serviço</label>
-                    <select class="form-select my-3 px-3" id="options-modal-contact-1">
+                    <label class="row text-start px-3" for="options-modal-contact-1">serviço</label>
+                    <select class="form-select my-3 px-3" name="options-modal-contact-1" id="options-modal-contact-1">
                         <option value="contato_integracao_crm" selected>Integrações de Sistemas - CRM</option>
                         <option value="contato_integracao_erp">Integrações de Sistemas - ERP</option>
                         <option value="contato_integracao_pipedrive">Integrações de Sistemas - Pipedrive</option>
@@ -39,53 +38,55 @@
                 <div class="form-group">
                     <label class="row text-start px-3" for="name">name</label>
                     {{form_servive_pipedrive.name}}
-                    <!-- <small id="nameHelp" class="row text-start py-1 px-3">We'll never share your email with anyone else.</small> -->
                 </div>
                 <!-- ---- -->
                 <div class="row w-100 py-3 block-modal-options">
-                    <div class="w-27 px-3">
-                        <input type="radio" name="checkbox-CPF" id="checkbox-CPF"  checked class="input-check-contact">
-                        <label for="checkbox-CPF">CPF</label>
+                    <div class="w-26 px-3">
+                        <input type="button" class="btn-options-contact active" id="checkbox-CPF" value="CPF" data-check-input="1">
                     </div>
-                    <div class="w-27 px-3">
-                        <input type="radio" name="checkbox-CNPJ" id="checkbox-CNPJ" class="input-check-contact">
-                        <label for="checkbox-CNPJ">CNPJ</label>
+                    <div class="w-26 px-3">
+                        <input type="button" class="btn-options-contact" id="checkbox-CNPJ" value="CNPJ" data-check-input="0">
                     </div>
                 </div>
                 <!-- ---- -->
                 <div class="form-group" id="block-inputs-CPF">
                     {{form_servive_pipedrive.cpf}}
-                    <!-- <small id="nameHelp" class="row text-start py-1 px-3">We'll never share your email with anyone else.</small> -->
                 </div>
                 <!-- ---- -->
                 <div class="form-group" id="block-inputs-CNPJ" style="display: none;">
                     {{form_servive_pipedrive.cnpj}}
-                    <!-- <small id="nameHelp" class="row text-start py-1 px-3">We'll never share your email with anyone else.</small> -->
                 </div>
+
+                {% if check_field_doc %}
+                    <small data-message-error-input="error-input" class="row text-start py-1 px-3 invalid-inputs">documento inválido.</small>
+                    <small data-message-error-input="error-input" class="row text-start py-1 px-3"><article>ex: 000.000.000-00</article></small>
+                    <small data-message-error-input="error-input" class="row text-start py-1 px-3"><article>ex: 00.000.000/0000-00</article></small>
+                {% endif %}
                 <!-- ---- -->
                 <div class="row w-100 py-3 block-modal-options">
-                    <div class="w-27 px-3">
-                        <input type="radio" name="checkbox-whatsapp" id="checkbox-whatsapp" checked class="input-check-contact">
-                        <label for="checkbox-whatsapp">WhatsApp</label>
+                    <div class="w-26 px-3">
+                        <input type="button" class="btn-options-contact active" id="checkbox-whatsapp" value="WhatsApp" data-check-input="1">
                     </div>
-                    <div class="w-27 px-3">
-                        <input type="radio" name="checkbox-email" id="checkbox-email" class="input-check-contact">
-                        <label for="checkbox-email">E-mail</label>
+                    <div class="w-26 px-3">
+                        <input type="button" class="btn-options-contact" id="checkbox-email" value="E-mail" data-check-input="0">
                     </div>
                 </div>
                 <!-- ---- -->
                 <div class="form-group" id="block-inputs-WHATSAPP">
                     {{form_servive_pipedrive.whatsapp}}
-                    <!-- <small id="nameHelp" class="row text-start py-1 px-3">We'll never share your email with anyone else.</small> -->
                 </div>
                 <!-- ---- -->
                 <div class="form-group" id="block-inputs-EMAIL" style="display: none;">
                     {{form_servive_pipedrive.email}}
-                    <!-- <small id="nameHelp" class="row text-start py-1 px-3">We'll never share your email with anyone else.</small> -->
                 </div>
+                {% if check_field_contact %}
+                    <small data-message-error-input="error-input" class="row text-start py-1 px-3 invalid-inputs">contato inválido.</small>
+                    <small data-message-error-input="error-input" class="row text-start py-1 px-3"><article>ex: (00) 0 0000-0000 </article></small>
+                    <small data-message-error-input="error-input" class="row text-start py-1 px-3"><article>ex: seu@email@gmail.com </article></small>
+                {% endif %}
                 
                 
-                <button class="w-100 btn btn-outline-primary my-2">enviar</button>
+                <button class="w-100 btn btn-outline-primary my-2 btn-send-form-contatc-service">enviar</button>
             </form>
         </div>
 
@@ -110,9 +111,6 @@
                 <button type="button" class="btn btn-outline-primary" data-service="contato_desenvolvimento_web" onclick="openModalServiceContatc(this);">
                     Desevolvimento de WEB
                 </button>
-
-
-
             </div>
         </div>
     </div>
@@ -213,94 +211,5 @@
 </main>
 
 
-<script>
-
-    function openModalServiceContatc(element){
-        
-        let eixo_y = window.pageYOffset;
-        let aux_eixo_y = 0;
-        let tam_body_x = window.screen.width;
-        let tam_body_y = window.screen.height;
-        
-        let data_service = element.dataset.service;
-        let modal_form_select = document.getElementById("options-modal-contact-1");
-        for (let i =0 ; i < modal_form_select.length; i++){
-            if(data_service == modal_form_select.options[i].value){
-                modal_form_select.options[i].selected = true;
-            } else {
-                modal_form_select.options[i].selected = false;
-            }
-
-        }
-
-        if (tam_body_x <= 500){
-            aux_eixo_y = 290;
-        }
-        else if (tam_body_x >= 500 && tam_body_x < 740){
-            aux_eixo_y = 300;
-        }
-        else if (tam_body_x >= 740){
-            aux_eixo_y = 80;
-        }
-        document.querySelector(".modal-services-contact").classList.toggle("active");
-        document.querySelector(".modal-services-contact.active").style.top = `${eixo_y + aux_eixo_y}px`;
-        document.querySelector("body").classList.toggle("acitve-modal");
-    }
-
-
-    const BTN_CLOSE_servicePipedriveModal = document.querySelector('[data-target="BTN_CLOSE_servicePipedriveModal"]');
-    BTN_CLOSE_servicePipedriveModal.addEventListener("click", function(){
-        document.querySelector(".modal-services-contact").classList.toggle("active");
-        document.querySelector("body").classList.toggle("acitve-modal");
-    });
-</script>
-<script>
-    const checkbox_CPF = document.getElementById("checkbox-CPF");
-    const checkbox_CNPJ = document.getElementById("checkbox-CNPJ");
-    const block_inputs_CPF = document.getElementById("block-inputs-CPF");
-    const block_inputs_CNPJ = document.getElementById("block-inputs-CNPJ");
-    
-    checkbox_CPF.addEventListener("click", function(e) {
-        // e.preventDefault();
-        if(checkbox_CPF.checked){
-            block_inputs_CPF.style.display = "block";
-            block_inputs_CNPJ.style.display = "none";
-            checkbox_CNPJ.checked = false;
-        } 
-    });
-    checkbox_CNPJ.addEventListener("click", function(e) {
-        // e.preventDefault();
-        if(checkbox_CPF.checked){
-            block_inputs_CNPJ.style.display = "block";
-            block_inputs_CPF.style.display = "none";
-            checkbox_CPF.checked = false;
-        } 
-    });
-</script>
-
-<script>
-    const checkbox_WHATSAPP = document.getElementById("checkbox-whatsapp");
-    const checkbox_EMAIL = document.getElementById("checkbox-email");
-    const block_inputs_WHATSAPP = document.getElementById("block-inputs-WHATSAPP");
-    const block_inputs_EMAIL = document.getElementById("block-inputs-EMAIL");
-    
-    checkbox_WHATSAPP.addEventListener("click", function(e) {
-        // e.preventDefault();
-        if(checkbox_WHATSAPP.checked){
-            block_inputs_WHATSAPP.style.display = "block";
-            block_inputs_EMAIL.style.display = "none";
-            checkbox_EMAIL.checked = false;
-        } 
-    });
-    checkbox_EMAIL.addEventListener("click", function(e) {
-        // e.preventDefault();
-        if(checkbox_EMAIL.checked){
-            block_inputs_EMAIL.style.display = "block";
-            block_inputs_WHATSAPP.style.display = "none";
-            checkbox_WHATSAPP.checked = false;
-        } 
-    });
-</script>
-
-
+<script defer src="{% static 'modalContactServices.js' %}"></script>
 {% endblock %}

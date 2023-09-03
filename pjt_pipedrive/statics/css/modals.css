@@ -1,15 +1,34 @@
+body.acitve-modal {
+    background-color: #c9cbcb !important;
+    pointer-events: none;
+}
+body.acitve-modal .block-image-about > img {
+    opacity: .3 !important;
+}
+.modal-services-contact::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 0px 5px 5px 0px;
+    background-color: transparent;
+}
+.modal-services-contact::-webkit-scrollbar-thumb {
+    background-color: var(--color-base-2);
+}
 .modal-services-contact {
     display: none;
+    overflow-y: scroll !important;
+}
+.modal-services-contact {
+    max-height: 90vh !important;
 }
 .modal-services-contact.active {
     display: flex;
     max-width: 550px;
-    min-height: auto 300px;
+    min-height: 20%;
+    /* max-height: 100%; */
     background-color: #fff;
     box-shadow: var(--box-shadow-1);
     border-radius: 5px;
     position: absolute;
-    /* top: 50%; */
     left: 50%;
     transform: translate(-50%, 0%);
     pointer-events: all !important;
@@ -26,13 +45,43 @@
     }
 }
 
-body.acitve-modal {
-    background-color: #c9cbcb !important;
-    pointer-events: none;
+
+.btn-options-contact {
+    color: var(--color-base-2);
+    border-radius: 5px;
+    border: 1px solid var(--color-base-2);
+    background-color: white;
+    width: 100%;
+    transition: .3s ease-in-out;
 }
-body.acitve-modal .block-image-about > img {
-    opacity: .3 !important;
+.btn-options-contact.active {
+    color: #fff;
+    border: 1px solid white;
+    background-color: var(--color-base-2);
 }
+.btn-options-contact:hover {
+    color: white;
+    background-color: var(--color-base-2);
+}
+
+[data-check-input="error-input"],
+[data-check-input="valid-input"] {
+    border: 1px solid;
+}
+[data-check-input="error-input"] {
+    border-color: red;
+}
+[data-check-input="valid-input"] {
+    border-color: lime;
+}
+[data-message-error-input="error-input"] {
+    color: #f44e4e;
+}
+[data-message-error-input="error-input"] article {
+    color: #433e3e;
+}
+
+
 
 .btn-close-modal i {
     width: 25px;

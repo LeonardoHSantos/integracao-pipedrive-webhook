@@ -70,7 +70,6 @@
     }
 }
 @media screen and (min-width: 568px) {
-    
     .cards-wrapper {
         display: flex;
     }
@@ -91,6 +90,12 @@
 }
 
 @media screen and (max-width: 567px) {
+    .w-26 {
+        width: 46% !important;
+    }
+    .modal-services-contact {
+        max-height: 60vh !important;
+    }
     main {
         margin-top: 52px !important;
     }

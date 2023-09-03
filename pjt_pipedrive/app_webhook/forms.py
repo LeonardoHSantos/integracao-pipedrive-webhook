@@ -9,7 +9,7 @@ class FormContactServicePipedrive(forms.Form):
             "placeholder": "nome"
         }
     ))
-    cpf = forms.CharField(max_length=14, widget=forms.TextInput(
+    cpf = forms.CharField(max_length=14,  required=False, widget=forms.TextInput(
         attrs={
             "id": "cpf",
             "name": "cpf",
@@ -17,7 +17,7 @@ class FormContactServicePipedrive(forms.Form):
             "placeholder": "000.000.000-00"
         }
     ))
-    cnpj = forms.CharField(max_length=18, widget=forms.TextInput(
+    cnpj = forms.CharField(max_length=18,  required=False, widget=forms.TextInput(
         attrs={
             "id": "cnpj",
             "name": "cnpj",
@@ -25,7 +25,7 @@ class FormContactServicePipedrive(forms.Form):
             "placeholder": "00.000.000/0000-00"
         }
     ))
-    whatsapp = forms.CharField(max_length=55, widget=forms.TextInput(
+    whatsapp = forms.CharField(max_length=55,  required=False, widget=forms.TextInput(
         attrs={
             "id": "whatsapp",
             "name": "whatsapp",
@@ -33,7 +33,7 @@ class FormContactServicePipedrive(forms.Form):
             "placeholder": "(00) 9 9999-9999"
         }
     ))
-    email = forms.EmailField(max_length=55, widget=forms.EmailInput(
+    email = forms.EmailField(max_length=55,  required=False, widget=forms.EmailInput(
         attrs={
             "id": "email",
             "name": "email",
