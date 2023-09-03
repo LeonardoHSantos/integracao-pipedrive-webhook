@@ -249,6 +249,8 @@ def PipedrivePerson(request):
             --> current_phone: {current_phone} | {type(current_phone)}
             --> current_add_time: {current_add_time} | {type(current_add_time)}
             --> current_update_time: {current_update_time} | {type(current_update_time)}
+            --> current_person_cpf: {current_person_cpf}
+            --> current_person_cnpj: {current_person_cnpj}
             """)
             query_person = Person.objects.filter(current_person_id=current_id).first()
             print("\n ------------ query person ------------ ")
