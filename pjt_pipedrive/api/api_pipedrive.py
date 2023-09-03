@@ -1,6 +1,6 @@
 import json
 import requests
-from config_app import API_TOKEN, COMPANY_DOMAIN
+from config_app import API_TOKEN, COMPANY_DOMAIN, CUSTOM_FIELDS_PIPEDRIVE
 
 class API_Pipedrive:
     def __init__(self, api_token, company_domain):
@@ -25,11 +25,12 @@ class API_Pipedrive:
                 # print("\n\n\n\n\n------------------------------->>> DATA")
                 # print(result)
                 data = {
+                    "id": {"field_edit": False, "type": "text", "value": person_id},
                     "name": {"field_edit": True, "type": "text", "value": result["name"]},
                     "phone": {"field_edit": True, "field_object": True, "type": "text", "value": result["phone"]},
                     "email": {"field_edit": True, "field_object": True, "type": "email", "value": result["email"]},
-                    "cpf": {"field_edit": False, "type": "text", "value": result["734947ead36fa24525e3bdc1eb6e89eb73542ebd"]},
-                    "cnpj": {"field_edit": False, "type": "text", "value": result["b0ea791a0634c39260148b77d5df16b137817c0b"]},
+                    "cpf": {"field_edit": False, "type": "text", "value": result[CUSTOM_FIELDS_PIPEDRIVE["cpf"]]},
+                    "cnpj": {"field_edit": False, "type": "text", "value": result[CUSTOM_FIELDS_PIPEDRIVE["cnpj"]]},
                 }
                 data_resume = {
                     "id": {"field_edit": False, "type": "text", "value": person_id},
@@ -40,8 +41,8 @@ class API_Pipedrive:
                     "closed_deals_count": {"field_edit": False, "type": "text", "value": result["closed_deals_count"]},
                     "add_time": {"field_edit": False, "type": "text", "value": result["add_time"]},
                     "update_time": {"field_edit": False, "type": "text", "value": result["update_time"]},
-                    "cpf": {"field_edit": False, "type": "text", "value": result["734947ead36fa24525e3bdc1eb6e89eb73542ebd"]},
-                    "cnpj": {"field_edit": False, "type": "text", "value": result["b0ea791a0634c39260148b77d5df16b137817c0b"]},
+                    "cpf": {"field_edit": False, "type": "text", "value": result[CUSTOM_FIELDS_PIPEDRIVE["cpf"]]},
+                    "cnpj": {"field_edit": False, "type": "text", "value": result[CUSTOM_FIELDS_PIPEDRIVE["cnpj"]]},
                 }
                 # print("******************************* RESUME")
                 # print(data_resume)
@@ -102,6 +103,30 @@ class API_Pipedrive:
                 }
         except Exception as e:
             print(f"\n ### ERRO AO CRIAR PERSON | ERRO: {e}")
+            return {"code": 500, "msg": "person - houve algum erro com o servidor."}
+    
+    # ---
+    def delete_person(self, id_person):
+        # print(data)
+        try:
+            url = f"https://{COMPANY_DOMAIN}.pipedrive.com/api/v1/persons/{id_person}/?api_token={API_TOKEN}"
+            headers = {'content-type': 'application/json'}
+            response = requests.delete(
+                url=url,
+                headers=headers
+            )
+            result = response.json()
+            if not result["success"]:
+                print("\n\n\n>>>", result)
+                return {"code": 401, "msg": "falha ao deletar pessoa."}
+
+            elif result["data"]["id"]:
+                return {
+                    "code": 200,
+                    "msg": "person deletada com sucesso."
+                }
+        except Exception as e:
+            print(f"\n ### ERRO AO DELETAR PERSON | ERRO: {e}")
             return {"code": 500, "msg": "person - houve algum erro com o servidor."}
     # ---
     def get_fields(self):

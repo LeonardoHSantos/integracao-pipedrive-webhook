@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -8,7 +8,7 @@ from django.contrib.auth import login, logout
 from .models import Deals, Person
 from api.prepare_data import PrepareData
 from api.api_pipedrive import API_Pipedrive
-from config_app import API_TOKEN, COMPANY_DOMAIN
+from config_app import API_TOKEN, COMPANY_DOMAIN, CUSTOM_FIELDS_PIPEDRIVE
 
 from .forms import FormContactServicePipedrive
 
@@ -36,8 +36,9 @@ def infoServices(request, service_name):
 def detailsServices(request):
     form = FormContactServicePipedrive()
     if request.method == "GET":
-        personFields = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN).get_fields()
-        print(personFields)
+        # personFields = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN).get_fields()
+        # print(personFields)
+        
         context = {
             "form_servive_pipedrive": form,
         }
@@ -64,11 +65,10 @@ def detailsServices(request):
                 "email": p["email"][0],
             }
 
-            personFields = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN).get_fields()
-            print(personFields)
+            
             obj_create = {
                 "name": p["name"][0],
-                personFields["service_name_contact"]: p["options-modal-contact-1"][0],
+                CUSTOM_FIELDS_PIPEDRIVE["service_name_contact"]: p["options-modal-contact-1"][0],
                 "label": 6,
                 "phone": [],
                 "email": [],
@@ -80,19 +80,18 @@ def detailsServices(request):
                     check_field_doc = False
                     obj_create.update(
                     {
-                        personFields["cpf"]: doc_lead
+                        CUSTOM_FIELDS_PIPEDRIVE["cpf"]: doc_lead
                     })
-                    # data.update({"cpf_lead": doc_lead})
+            # ---
             elif len(p["cnpj"][0]) == 18:
                 doc_lead = PrepareData.validateCNPJ(data=p["cnpj"][0])
                 if doc_lead is not None:
                     check_field_doc = False
                     obj_create.update(
                     {
-                        personFields["cnpj"]: doc_lead
+                        CUSTOM_FIELDS_PIPEDRIVE["cnpj"]: doc_lead
                     })
-                    # data.update({"cnpj_lead": doc_lead})
-            # # ---
+            # ---
             if len(p["whatsapp"][0]) == 16:
                 contact_lead = PrepareData.validatePHONE(data=p["whatsapp"][0])
                 if contact_lead is not None:
@@ -102,7 +101,7 @@ def detailsServices(request):
                         "label": "work",
                         "value": contact_lead
                     })
-                    # data.update({"phone_lead": contact_lead})
+            # ---
             else:
                 if len(p["email"][0]) > 5:
                     check_field_contact = False
@@ -111,7 +110,6 @@ def detailsServices(request):
                         "label": "work",
                         "value": p["email"][0]
                     })
-                    # data.update({"email_lead": p["email"][0]})
             
             
             if check_field_contact or check_field_doc:
@@ -132,7 +130,7 @@ def detailsServices(request):
             else:
                 form = FormContactServicePipedrive()
 
-                print("************************* \n\n")
+                print("\n\n ************************* OBJ CREATE PERSON")
                 print(obj_create)
                 API = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN)
                 API.create_person(data=obj_create)
@@ -181,8 +179,8 @@ def infoPerson(request, id_person):
             "label": 5,
             "phone": [],
             "email": [],
-            "734947ead36fa24525e3bdc1eb6e89eb73542ebd": cpf[0],
-            "b0ea791a0634c39260148b77d5df16b137817c0b": cnpj[0],
+            CUSTOM_FIELDS_PIPEDRIVE["cpf"]: cpf[0],
+            CUSTOM_FIELDS_PIPEDRIVE["cnpj"]: cnpj[0],
         }
         # print("\n\n\n ****************** OBJ UPDATE:")
         # print(obj_update)
@@ -218,7 +216,24 @@ def infoPerson(request, id_person):
                 "not_found_data": True,
             }
             return render(request, "app/infoPerson.html", context=context)
-    
+# ---
+def deletePerson(request, id_person):
+    API = API_Pipedrive(api_token=API_TOKEN, company_domain=COMPANY_DOMAIN)
+    if request.method == "GET":
+        person = API.delete_person(id_person=int(id_person))
+        # delPerson = Person.objects.filter(
+        #     current_person_id=id_person
+        # ).delete()
+        # print(delPerson)
+        if person["code"] == 200:
+            return redirect("person")
+        else:
+            context = {
+                "code": 400,
+                "data": "error",
+                "not_found_data": True,
+            }
+            return render(request, "app/infoPerson.html", context=context)
 @csrf_exempt
 def PipedrivePerson(request):
     try:
@@ -230,68 +245,77 @@ def PipedrivePerson(request):
             # print(context)
             return render(request, "app/person.html", context=context)
         elif request.method == "POST":
-            # print(request.headers)
-            # print("\n\n --------->> DATA WEBHOOK - PERSON")
+
             body = json.loads(request.body)
             # print(body)
-            current = body["current"]
-            # ---
-            current_id = int(current["id"])
-            current_name = current["name"]
-            current_owner_name = current["owner_name"]
-            current_open_deals_count = int(current["open_deals_count"])
-            current_email = current["email"][0]["value"]
-            current_phone = current["phone"][0]["value"]
-            current_add_time = PrepareData.convert_string_to_datetime(current["add_time"])
-            current_update_time = PrepareData.convert_string_to_datetime(current["update_time"])
-            current_person_cpf = current["734947ead36fa24525e3bdc1eb6e89eb73542ebd"]
-            current_person_cnpj = current["b0ea791a0634c39260148b77d5df16b137817c0b"]
+            if body["meta"]["action"] =="delete":
+                try:
+                    Person.objects.filter(
+                        current_person_id=body["meta"]["id"]
+                    ).delete()
+                    print(f'DELETE PERSON SUCESSS | PERSON_ID: {body["meta"]["id"]}')
+                except Exception as e:
+                    print(f" ### ERROR DELETE PERSON | ERROR: {e} ### ")
+                    print(f' ### DELETE PERSON ERROR | PERSON_ID: {body["meta"]["id"]}')
+            elif body["meta"]["action"] =="updated":
+                current = body["current"]
+                # ---
+                current_id = int(current["id"])
+                current_name = current["name"]
+                current_owner_name = current["owner_name"]
+                current_open_deals_count = int(current["open_deals_count"])
+                current_email = current["email"][0]["value"]
+                current_phone = current["phone"][0]["value"]
+                current_add_time = PrepareData.convert_string_to_datetime(current["add_time"])
+                current_update_time = PrepareData.convert_string_to_datetime(current["update_time"])
+                current_person_cpf = current[CUSTOM_FIELDS_PIPEDRIVE["cpf"]]
+                current_person_cnpj = current[CUSTOM_FIELDS_PIPEDRIVE["cnpj"]]
 
-            print(f"""
-            --> current_id: {current_id} | {type(current_id)}
-            --> current_name: {current_name} | {type(current_name)}
-            --> current_owner_name: {current_owner_name} | {type(current_owner_name)}
-            --> current_open_deals_count: {current_open_deals_count} | {type(current_open_deals_count)}
-            --> current_email: {current_email} | {type(current_email)}
-            --> current_phone: {current_phone} | {type(current_phone)}
-            --> current_add_time: {current_add_time} | {type(current_add_time)}
-            --> current_update_time: {current_update_time} | {type(current_update_time)}
-            --> current_person_cpf: {current_person_cpf}
-            --> current_person_cnpj: {current_person_cnpj}
-            """)
-            query_person = Person.objects.filter(current_person_id=current_id).first()
-            print("\n ------------ query person ------------ ")
-            print(query_person)
-            if query_person is not None:
-                query_person.current_person_id = current_id
-                query_person.current_person_name = current_name
-                query_person.current_person_owner_name = current_owner_name
-                query_person.current_person_open_deals_count = current_open_deals_count
-                query_person.current_person_email = current_email
-                query_person.current_person_phone = current_phone
-                query_person.current_person_add_time = current_add_time
-                query_person.current_person_update_time = current_update_time
-                query_person.current_person_cpf = current_person_cpf
-                query_person.current_person_cnpj = current_person_cnpj
-                query_person.save()
-                print(" --------->>> registro atualizado - person ")
-            else:
-                new_person = Person.objects.create(
-                    current_person_id=current_id,
-                    current_person_name=current_name,
-                    current_person_owner_name=current_owner_name,
-                    current_person_open_deals_count=current_open_deals_count,
-                    current_person_email=current_email,
-                    current_person_phone=current_phone,
-                    current_person_add_time=current_add_time,
-                    current_person_update_time=current_update_time,
-                    current_person_cpf=current_person_cpf,
-                    current_person_cnpj=current_person_cnpj
-                )
-                # new_person.save()
-                print("\n\n --------->>> registro criado - person ")
-                print(new_person)
-            return JsonResponse({"code": 200, "msg": "success action webhook person - update"})
+                print(f"""
+                --> current_id: {current_id} | {type(current_id)}
+                --> current_name: {current_name} | {type(current_name)}
+                --> current_owner_name: {current_owner_name} | {type(current_owner_name)}
+                --> current_open_deals_count: {current_open_deals_count} | {type(current_open_deals_count)}
+                --> current_email: {current_email} | {type(current_email)}
+                --> current_phone: {current_phone} | {type(current_phone)}
+                --> current_add_time: {current_add_time} | {type(current_add_time)}
+                --> current_update_time: {current_update_time} | {type(current_update_time)}
+                --> current_person_cpf: {current_person_cpf}
+                --> current_person_cnpj: {current_person_cnpj}
+                """)
+                query_person = Person.objects.filter(current_person_id=current_id).first()
+                print("\n ------------ query person ------------ ")
+                print(query_person)
+                if query_person is not None:
+                    query_person.current_person_id = current_id
+                    query_person.current_person_name = current_name
+                    query_person.current_person_owner_name = current_owner_name
+                    query_person.current_person_open_deals_count = current_open_deals_count
+                    query_person.current_person_email = current_email
+                    query_person.current_person_phone = current_phone
+                    query_person.current_person_add_time = current_add_time
+                    query_person.current_person_update_time = current_update_time
+                    query_person.current_person_cpf = current_person_cpf
+                    query_person.current_person_cnpj = current_person_cnpj
+                    query_person.save()
+                    print(" --------->>> registro atualizado - person ")
+                else:
+                    new_person = Person.objects.create(
+                        current_person_id=current_id,
+                        current_person_name=current_name,
+                        current_person_owner_name=current_owner_name,
+                        current_person_open_deals_count=current_open_deals_count,
+                        current_person_email=current_email,
+                        current_person_phone=current_phone,
+                        current_person_add_time=current_add_time,
+                        current_person_update_time=current_update_time,
+                        current_person_cpf=current_person_cpf,
+                        current_person_cnpj=current_person_cnpj
+                    )
+                    # new_person.save()
+                    print("\n\n --------->>> registro criado - person ")
+                    print(new_person)
+                return JsonResponse({"code": 200, "msg": "success action webhook person - update"})
         return JsonResponse({"code": 401, "msg": "not-fould"})
     except Exception as e:
         print(f"ERROR WEBHOOK PERSON | ERROR: {e}")

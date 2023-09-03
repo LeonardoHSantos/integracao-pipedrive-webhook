@@ -11,8 +11,10 @@
             <a href="{% url 'person' %}" class="col-6 col-sm-3 w-25 text-end link">voltar</a>
         </div>
         {% if not_found_data %}
-            <p>Nenhum registro encontrado.</p>
+        <p>Nenhum registro encontrado.</p>
         {% else %}
+            <a href="{% url 'detele_person' data.id.value  %}" class="col-6 col-sm-3 w-25 text-end link">deletar</a>
+            <p style="font-size: 14px;">Person ID: {{data.id.value}}</p>
             <form action="" method="POST" class="container w-100">
                 {% csrf_token %}
                 <div class="row d-flex justify-content-center px-2 mb-2">

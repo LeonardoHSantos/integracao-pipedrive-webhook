@@ -6,23 +6,66 @@
 
 <div class="container-fluid" style="margin: 70px auto;">   
     <h3>Pipedrive - Person</h3> 
-    <div class="table-responsive">
-        <table class="table table-dark table-striped">
-            <thead>
+    <div class="table-responsive" id="table-data-person">
+        <table class="table table-striped table-hover">
+            <thead class="thead-light">
                 <tr>
-                    <th scope="col">action</th>
-                    <th scope="col">id</th>
-                    <th scope="col">person_id</th>
-                    <th scope="col">person_name</th>
-                    <th scope="col">person_owner_name</th>
-                    <th scope="col">person_open_deals_count</th>
-                    <th scope="col">person_email</th>
-                    <th scope="col">person_phone</th>
-                    <th scope="col">person_add_time</th>
-                    <th scope="col">person_update_time</th>
-                    <th scope="col">cpf</th>
-                    <th scope="col">cnpj</th>
-
+                    <th scope="col">actions</th>
+                    <th scope="col">
+                        <article class="d-flex justify-content-between -align-items-center">
+                            <span>id</span>
+                        </article>
+                    </th>
+                    <th scope="col">
+                        <article class="d-flex justify-content-between -align-items-center">
+                            <span>person_id</span>
+                        </article>
+                    </th>
+                    <th scope="col">
+                        <article class="d-flex justify-content-between -align-items-center">
+                            <span>person_name</span>
+                        </article>
+                    </th>
+                    <th scope="col">
+                        <article class="d-flex justify-content-between -align-items-center">
+                            <span>person_owner_name</span>
+                        </article>
+                    </th>
+                    <th scope="col">
+                        <article class="d-flex justify-content-between -align-items-center">
+                            <span>person_open_deals_count</span>
+                        </article>
+                    </th>
+                    <th scope="col">
+                        <article class="d-flex justify-content-between -align-items-center">
+                            <span>person_email</span>
+                        </article>
+                    </th>
+                    <th scope="col">
+                        <article class="d-flex justify-content-between -align-items-center">
+                            <span>person_phone</span>
+                        </article>
+                    </th>
+                    <th scope="col">
+                        <article class="d-flex justify-content-between -align-items-center">
+                            <span>person_add_time</span>
+                        </article>
+                    </th>
+                    <th scope="col">
+                        <article class="d-flex justify-content-between -align-items-center">
+                            <span>person_update_time</span>
+                        </article>
+                    </th>
+                    <th scope="col">
+                        <article class="d-flex justify-content-between -align-items-center">
+                            <span>cpf</span>
+                        </article>
+                    </th>
+                    <th scope="col">
+                        <article class="d-flex justify-content-between -align-items-center">
+                            <span>cnpj</span>
+                        </article>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -50,4 +93,5 @@
         </table>
     </div>
 </div>
+
 {% endblock %}

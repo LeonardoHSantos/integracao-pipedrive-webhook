@@ -10,5 +10,7 @@ urlpatterns = [
     path("detalhes-servicos/", views.detailsServices, name="details_services"),
     path("pipedrive/v1/person/", views.PipedrivePerson, name="person"),
     path("pipedrive/v1/info/person/<str:id_person>", views.infoPerson, name="info_person"),
+    path("pipedrive/v1/info/person/detele/<str:id_person>", views.deletePerson, name="detele_person"),
+
     path("pipedrive/v1/deals/", views.PipedriveDeals, name="deals"),
 ]

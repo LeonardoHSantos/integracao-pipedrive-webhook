@@ -113,3 +113,4 @@ BTN_CLOSE_servicePipedriveModal.addEventListener("click", function(){
     document.querySelector("body").classList.toggle("acitve-modal");
     document.body.style.overflow = 'auto';
 });
+

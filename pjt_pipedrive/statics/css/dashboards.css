@@ -1,0 +1,29 @@
+#table-data-person {
+    max-height: 460px;
+    padding: 3px 5px;
+    padding-top: 0px;
+}
+#table-data-person::-webkit-scrollbar {
+    background-color: transparent;
+    width: 3px;
+    height: 3px;
+}
+#table-data-person::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: var(--color-base-2);
+}
+#table-data-person table thead tr {
+    cursor: col-resize;
+    min-height: 40px;
+}
+#table-data-person table thead tr th{
+    position: sticky;
+    top: -3px;
+    min-width: 100px;
+    color: #fff;
+    background-color: var(--color-base-2);
+}
+
+#table-data-person table tbody tr td a i {
+    color: var(--color-base-2);
+}
