@@ -247,8 +247,8 @@ def PipedrivePerson(request):
         elif request.method == "POST":
 
             body = json.loads(request.body)
-            # print(body)
-            if body["meta"]["action"] =="delete":
+            print(body)
+            if body["meta"]["action"] == "delete":
                 try:
                     Person.objects.filter(
                         current_person_id=body["meta"]["id"]
@@ -257,7 +257,7 @@ def PipedrivePerson(request):
                 except Exception as e:
                     print(f" ### ERROR DELETE PERSON | ERROR: {e} ### ")
                     print(f' ### DELETE PERSON ERROR | PERSON_ID: {body["meta"]["id"]}')
-            elif body["meta"]["action"] =="updated":
+            elif body["meta"]["action"] == "updated":
                 current = body["current"]
                 # ---
                 current_id = int(current["id"])
