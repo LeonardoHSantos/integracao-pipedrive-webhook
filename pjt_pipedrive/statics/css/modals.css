@@ -18,7 +18,7 @@ body.acitve-modal .block-image-about > img {
     overflow-y: scroll !important;
 }
 .modal-services-contact {
-    max-height: 90vh !important;
+    max-height: 90vh;
 }
 .modal-services-contact.active {
     display: flex;

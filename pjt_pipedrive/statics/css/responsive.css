@@ -64,7 +64,7 @@
         right: 18px;
     }
     .modal-services-contact {
-        max-width: 87% !important;
+        max-width: 87%;
         transform: translate(-51%, -45%) !important;
 
     }
@@ -94,7 +94,9 @@
         width: 46% !important;
     }
     .modal-services-contact {
+        left: 49% !important;
         max-height: 60vh !important;
+        max-width: 357px !important;
     }
     main {
         margin-top: 52px !important;

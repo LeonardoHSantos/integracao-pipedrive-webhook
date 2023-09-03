@@ -77,7 +77,7 @@ function toggleModal(){
     let tam_body_y = window.screen.height;
 
     if (tam_body_x <= 560){
-        aux_eixo_y = 265;
+        aux_eixo_y = 255;
     }
     else if (tam_body_x >= 560 && tam_body_x < 740){
         aux_eixo_y = 245;
