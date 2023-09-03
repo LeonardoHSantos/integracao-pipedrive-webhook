@@ -248,7 +248,7 @@ def PipedrivePerson(request):
 
             body = json.loads(request.body)
             print(body)
-            if body["meta"]["action"] == "delete":
+            if body["meta"]["action"] == "deleted":
                 try:
                     Person.objects.filter(
                         current_person_id=int(body["meta"]["id"])
