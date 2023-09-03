@@ -10,8 +10,8 @@ class Person(models.Model):
     current_person_phone = models.CharField(default="-", max_length=25)
     current_person_add_time = models.DateTimeField(default=timezone.now)
     current_person_update_time = models.DateTimeField(default=timezone.now)
-    current_person_cpf = models.CharField(default="-", max_length=14)
-    current_person_cnpj = models.CharField(default="-", max_length=18)
+    current_person_cpf = models.CharField(default="-", max_length=14, null=True)
+    current_person_cnpj = models.CharField(default="-", max_length=18, null=True)
 
 
 class Deals(models.Model):
