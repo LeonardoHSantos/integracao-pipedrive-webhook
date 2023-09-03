@@ -48,3 +48,25 @@
 .fa-right-long {
     color: rgb(0, 0, 0);
 }
+
+
+
+[data-animation-scroll] {
+    opacity: 0;
+    transition: .6s;
+}
+[data-animation-scroll="cards-services-left"] {
+    transform: translate3d(-80px, 0, 0) !important;
+}
+[data-animation-scroll="cards-services-right"] {
+    transform: translate3d(80px, 0, 0) !important;
+}
+[data-animation-scroll="cards-services-botton"] {
+    transform: translate3d(0px, 50px, 0) !important;
+}
+
+
+[data-animation-scroll].animate {
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px) !important;
+}

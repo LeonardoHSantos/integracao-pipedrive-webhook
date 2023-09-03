@@ -8,7 +8,8 @@
   <div class="container banner-principal">
     <img src="{% static 'banner desenvolvimento web 1.png' %}"  alt="desenvolvimento web" class="w-100">
   </div>
-  <div class="container-fluid banner-principal-2 d-flex gap-5 flex-wrap">
+
+  <div class="container-fluid banner-principal-2 d-flex gap-5 flex-wrap" data-animation-scroll="cards-services-botton">
     <div class="block-banner block-1"></div>
     <div class="block-banner block-2">
       <h3 style="font-weight: 600 !important;">otimize sua rotina com nossos serviços</h3>
@@ -18,13 +19,13 @@
   </div>
 
 
-  
-  
+
   <div class="container-cards container-fluid d-flex justify-content-center align-center flex-wrap text-start gap-5 mt-5 mb-5">
-      <div class="row w-100 text-center p-2">
+      <div class="row w-100 text-center p-2" data-animation-scroll="cards-services-botton">
         <h3>Principais Integrações</h3>
       </div>
-      <div class="card-service">
+
+      <div class="card-service" data-animation-scroll="cards-services-left">
         <div class="content-card-service">
           <div class="card-image-service">
               <img src="{% static 'logo-pipedrive.png' %}" alt="integração pipedrive">
@@ -45,7 +46,7 @@
         </div>
       </div>
 
-      <div class="card-service">
+      <div class="card-service" data-animation-scroll="cards-services-left">
         <div class="content-card-service">
           <div class="card-image-service">
               <img src="{% static 'logo-power-bi.png' %}" alt="integração power vi">
@@ -65,7 +66,7 @@
         </div>
       </div>
 
-      <div class="card-service">
+      <div class="card-service" data-animation-scroll="cards-services-right">
         <div class="content-card-service">
           <div class="card-image-service">
               <img src="{% static 'logo-database.png' %}" alt="integração database">
@@ -85,7 +86,7 @@
         </div>
       </div>
 
-      <div class="card-service">
+      <div class="card-service" data-animation-scroll="cards-services-right">
         <div class="content-card-service">
           <div class="card-image-service">
             <img src="{% static 'logo-asana.png' %}" alt="integração asana">
@@ -108,4 +109,13 @@
   </div>
 
 </main>
+
+
+
+
+<script>
+  
+
+
+</script>
 {% endblock %}

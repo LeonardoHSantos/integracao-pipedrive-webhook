@@ -91,7 +91,7 @@
         </div>
 
     </div>
-    <div class="px-3" data-content_services="content-base">
+    <div class="px-3" data-content_services="content-base" data-animation-scroll="cards-services-botton">
         <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about border-custom-right-bottom ">
             <div class="d-flex flex-wrap gap-2 mt-4 justify-content-center align-items-center p-3 w-75 block-content-datails-services">
                 <div class="row w-100 align-items-center justify-content-center text-center block-main-datails-services">
@@ -99,16 +99,16 @@
                     <p style="font-style: normal;">como podemos te ajudar?</p>
                 </div>
                 <a id="pipedrive"></a>
-                <button type="button" class="btn btn-outline-primary" data-service="contato_integracao_crm" onclick="openModalServiceContatc(this);">
+                <button data-animation-scroll="cards-services-botton" type="button" class="btn btn-outline-primary" data-service="contato_integracao_crm" onclick="openModalServiceContatc(this);">
                     Integração com CRM
                 </button>
-                <button type="button" class="btn btn-outline-primary" data-service="contato_integracao_erp" onclick="openModalServiceContatc(this);">
+                <button data-animation-scroll="cards-services-botton" type="button" class="btn btn-outline-primary" data-service="contato_integracao_erp" onclick="openModalServiceContatc(this);">
                     Integração com ERP
                 </button>
-                <button type="button" class="btn btn-outline-primary" data-service="contato_desenvolvimento_api" onclick="openModalServiceContatc(this);">
+                <button data-animation-scroll="cards-services-botton" type="button" class="btn btn-outline-primary" data-service="contato_desenvolvimento_api" onclick="openModalServiceContatc(this);">
                     Desevolvimento de APIs
                 </button>
-                <button type="button" class="btn btn-outline-primary" data-service="contato_desenvolvimento_web" onclick="openModalServiceContatc(this);">
+                <button data-animation-scroll="cards-services-botton" type="button" class="btn btn-outline-primary" data-service="contato_desenvolvimento_web" onclick="openModalServiceContatc(this);">
                     Desevolvimento de WEB
                 </button>
             </div>
@@ -116,9 +116,9 @@
     </div>
     <!-- ---- -->
     
-    <div class="px-3" data-content_services="content-base">
+    <div class="px-3" data-content_services="content-base" data-animation-scroll="cards-services-botton">
         <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about border-custom-left-bottom ">
-            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-50 block-content-datails-services">
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-50 block-content-datails-services" data-animation-scroll="cards-services-left">
                 <div class="row w-100 block-main-datails-services">
                     <h2>Pipedrive</h2>
                     <p>gerenciador de relacionamento com clientes</p>
@@ -133,17 +133,17 @@
 
             <a id="asana"></a>
             <div class="d-flex flex-column mt-4 justify-content-center align-items-center p-3 w-25 block-content-datails-services">
-                <button type="button" class="btn btn-outline-primary" data-service="contato_integracao_pipedrive" onclick="openModalServiceContatc(this);">
+                <button type="button" class="btn btn-outline-primary" data-service="contato_integracao_pipedrive" onclick="openModalServiceContatc(this);" data-animation-scroll="cards-services-right">
                     obter detalhes do serviço
                 </button>
             </div>
         </div>
     </div>
     <!-- ---- -->
-    <div class="px-3">
+    <div class="px-3" data-animation-scroll="cards-services-botton">
         <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about border-custom-right-bottom ">
             
-            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-50 block-content-datails-services">
+            <div  class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-50 block-content-datails-services" data-animation-scroll="cards-services-right">
                 <div class="row w-100 block-main-datails-services">
                     <h2>Asana</h2>
                     <p>gerenciador de projetos</p>
@@ -157,17 +157,17 @@
             </div>
             <a id="power-bi"></a>
             <div class="d-flex flex-column mt-4 justify-content-center align-items-center p-3 w-25 block-content-datails-services">
-                <button type="button" class="btn btn-outline-primary" data-service="contato_integracao_asana" onclick="openModalServiceContatc(this);">
+                <button type="button" class="btn btn-outline-primary" data-service="contato_integracao_asana" onclick="openModalServiceContatc(this);" data-animation-scroll="cards-services-left">
                     obter detalhes do serviço
                 </button>
             </div>
         </div>
     </div>
     <!-- ---- -->
-    <div class="px-3">
+    <div class="px-3" data-animation-scroll="cards-services-botton">
         <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about border-custom-left-bottom ">
             
-            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-50 block-content-datails-services">
+            <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-50 block-content-datails-services" data-animation-scroll="cards-services-left">
                 <div class="row w-100 block-main-datails-services">
                     <h2>Power BI</h2>
                     <p>ferramenta de business intelligence</p>
@@ -181,7 +181,7 @@
             </div>
             <a id="banco-de-dados"></a>
             <div class="d-flex flex-column mt-4 justify-content-center align-items-center p-3 w-25 block-content-datails-services">
-                <button type="button" class="btn btn-outline-primary" data-service="contato_integracao_power_bi" onclick="openModalServiceContatc(this);">
+                <button type="button" class="btn btn-outline-primary" data-service="contato_integracao_power_bi" onclick="openModalServiceContatc(this);" data-animation-scroll="cards-services-right">
                     obter detalhes do serviço
                 </button>
             </div>
@@ -189,7 +189,7 @@
         </div>
     </div>
     <!-- ---- -->
-    <div class="px-3">
+    <div class="px-3" data-animation-scroll="cards-services-botton">
         <div class="container-fluid d-flex justify-content-center align-items-center gap-1 flex-wrap container-main-about border-custom-right-bottom ">
             
             <div class="d-flex flex-column mt-4 justify-content-center align-items-start p-3 w-50 block-content-datails-services">
@@ -201,7 +201,7 @@
                 <p><span><i class="fa-solid fa-check"></i></span> tenha <b> flexibilidade</b> e <b>controle</b> para integrar com outras ferramentas</p>
             </div>
             <div class="d-flex flex-column mt-4 justify-content-center align-items-center p-3 w-25 block-content-datails-services">
-                <button type="button" class="btn btn-outline-primary" data-service="contato_integracao_database" onclick="openModalServiceContatc(this);">
+                <button type="button" class="btn btn-outline-primary" data-service="contato_integracao_database" onclick="openModalServiceContatc(this);" data-animation-scroll="cards-services-left">
                     obter detalhes do serviço
                 </button>
             </div>
