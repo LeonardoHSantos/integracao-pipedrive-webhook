@@ -19,6 +19,14 @@
                     <label class="form-label" for="name" class="col-sm-2 col-form-label">nome</label>
                     <input type="text" class="form-control" value="{{data.name.value}}" name="name" id="name">
                 </div>
+                <div class="row d-flex justify-content-center px-2 mb-2">
+                    <label class="form-label" for="cpf" class="col-sm-2 col-form-label">cpf</label>
+                    <input type="text" class="form-control" value="{{data.cpf.value}}" name="cpf" id="cpf">
+                </div>
+                <div class="row d-flex justify-content-center px-2 mb-2">
+                    <label class="form-label" for="cnpj" class="col-sm-2 col-form-label">cnpj</label>
+                    <input type="text" class="form-control" value="{{data.cnpj.value}}" name="cnpj" id="cnpj">
+                </div>
                 <div class="row d-flex justify-content-center">
                     <label class="form-label" for="phone" class="col col-form-label">telefone</label>
                     {% for data in data.phone.value %}

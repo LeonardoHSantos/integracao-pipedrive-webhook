@@ -172,14 +172,21 @@ def infoPerson(request, id_person):
         select_type_phone = r.get("select_type_phone")
         email = r.get("email")
         select_type_email = r.get("select_type_email")
+        cpf = r.get("cpf")
+        cnpj = r.get("cnpj")
+
 
         obj_update = {
             "name": r.get("name")[0],
             "label": 5,
             "phone": [],
             "email": [],
+            "734947ead36fa24525e3bdc1eb6e89eb73542ebd": cpf[0],
+            "b0ea791a0634c39260148b77d5df16b137817c0b": cnpj[0],
         }
-        
+        # print("\n\n\n ****************** OBJ UPDATE:")
+        # print(obj_update)
+
         for i in range(len(phone)):
             obj_update.get("phone").append(
                 {

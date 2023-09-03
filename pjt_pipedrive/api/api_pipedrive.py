@@ -14,8 +14,8 @@ class API_Pipedrive:
             url = f"https://{self.company_domain}.pipedrive.com/api/v1/persons/{person_id}?api_token={self.api_token}"
             response = requests.get(url)
             result = response.json()
-            print("\n\n\n------------------> PERSON DATA")
-            print(result)
+            # print("\n\n\n------------------> PERSON DATA")
+            # print(result)
 
             if not result["success"]:
                 return {"code": 401, "msg": "person - falha ao obter dados."}
@@ -28,6 +28,8 @@ class API_Pipedrive:
                     "name": {"field_edit": True, "type": "text", "value": result["name"]},
                     "phone": {"field_edit": True, "field_object": True, "type": "text", "value": result["phone"]},
                     "email": {"field_edit": True, "field_object": True, "type": "email", "value": result["email"]},
+                    "cpf": {"field_edit": False, "type": "text", "value": result["734947ead36fa24525e3bdc1eb6e89eb73542ebd"]},
+                    "cnpj": {"field_edit": False, "type": "text", "value": result["b0ea791a0634c39260148b77d5df16b137817c0b"]},
                 }
                 data_resume = {
                     "id": {"field_edit": False, "type": "text", "value": person_id},
@@ -38,9 +40,11 @@ class API_Pipedrive:
                     "closed_deals_count": {"field_edit": False, "type": "text", "value": result["closed_deals_count"]},
                     "add_time": {"field_edit": False, "type": "text", "value": result["add_time"]},
                     "update_time": {"field_edit": False, "type": "text", "value": result["update_time"]},
-                    "cpf": "",
-                    "cnpj": ""
+                    "cpf": {"field_edit": False, "type": "text", "value": result["734947ead36fa24525e3bdc1eb6e89eb73542ebd"]},
+                    "cnpj": {"field_edit": False, "type": "text", "value": result["b0ea791a0634c39260148b77d5df16b137817c0b"]},
                 }
+                # print("******************************* RESUME")
+                # print(data_resume)
                 return {
                     "code": 200,
                     "data": data,
@@ -51,7 +55,7 @@ class API_Pipedrive:
             return {"code": 500, "msg": "person - houve algum erro com o servidor."}
     # ---
     def update_person(self, person_id, data):
-        print(data)
+        # print(data)
         try:
 
             url = f"https://{COMPANY_DOMAIN}.pipedrive.com/api/v1/persons/{person_id}?api_token={API_TOKEN}"
@@ -76,7 +80,7 @@ class API_Pipedrive:
             return {"code": 500, "msg": "person - houve algum erro com o servidor."}
     # ---
     def create_person(self, data):
-        print(data)
+        # print(data)
         try:
 
             url = f"https://{COMPANY_DOMAIN}.pipedrive.com/api/v1/persons?api_token={API_TOKEN}"
@@ -102,9 +106,9 @@ class API_Pipedrive:
     # ---
     def get_fields(self):
         url = f'https://{self.company_domain}.pipedrive.com/api/v1/personFields:(key,name)?start=0&api_token={self.api_token}'
-        print(f"\n\n **** URL PERSON FIELDS: {url}")
+        # print(f"\n\n **** URL PERSON FIELDS: {url}")
         response = requests.get(url)
-        print(response)
+        # print(response)
         if not response.json()['data']:
             exit(f"Error: {response.json()['error']}")
         
@@ -116,13 +120,13 @@ class API_Pipedrive:
         for field in response.json()['data']:
             if field["name"] == "cpf":
                 fieldsObject["cpf"] = field["key"]
-                print(f"------- DATA: {field}")
+                # print(f"------- DATA: {field}")
             if field["name"] == "cnpj":
                 fieldsObject["cnpj"] = field["key"]
-                print(f"------- DATA: {field}")
+                # print(f"------- DATA: {field}")
             if field["name"] == "service_name_contact":
                 fieldsObject["service_name_contact"] = field["key"]
-                print(f"------- DATA: {field}")
+                # print(f"------- DATA: {field}")
         return fieldsObject
 
 
