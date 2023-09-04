@@ -5,7 +5,7 @@
 // [data-animation-scroll].animate
 const target = document.querySelectorAll('[data-animation-scroll]');
 function animationScroll(){
-const windownEixo_Y = window.pageYOffset + 540;
+const windownEixo_Y = window.pageYOffset + (window.innerHeight * 3 / 4.9);
     target.forEach(function(e){
         if ( (windownEixo_Y) > e.offsetTop){
         e.classList.add("animate");
